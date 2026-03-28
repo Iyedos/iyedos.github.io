@@ -9,204 +9,202 @@
     :root {
       --primary: #00d2ff;
       --secondary: #3a7bd5;
-      --dark: #0f172a;
-      --light: #f8fafc;
-      --accent: #f43f5e;
+      --dark: #070b14;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --text-dim: #94a3b8;
     }
 
-    * { box-sizing: border-box; transition: all 0.3s ease; }
+    * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+    html { scroll-behavior: smooth; }
 
     body { 
       font-family: 'Inter', sans-serif; 
       margin: 0; 
-      padding: 0; 
-      /* Modern Deep Gradient Background */
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
-      color: var(--light); 
-      line-height: 1.6;
+      background: #0f172a; 
+      color: #f8fafc; 
+      overflow-x: hidden;
+    }
+
+    /* Floating Animation for Header */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
     }
 
     header { 
-      background: transparent; 
-      text-align: center; 
-      padding: 100px 20px; 
-      position: relative;
-      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
     }
 
-    /* Animated background element */
-    header::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -10%;
-      width: 120%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(0,210,255,0.1) 0%, transparent 70%);
-      z-index: -1;
-    }
+    .hero-content { animation: float 6s ease-in-out infinite; }
 
     header h1 { 
-      margin: 0; 
-      font-size: 4rem; 
-      font-weight: 800;
-      background: linear-gradient(to right, #00d2ff, #94a3b8);
+      font-size: clamp(3rem, 10vw, 5rem); 
+      margin: 0;
+      background: linear-gradient(to right, #00d2ff, #3a7bd5);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    header p { 
-      margin: 20px auto; 
-      font-size: 1.3rem; 
-      max-width: 600px;
-      color: #94a3b8;
+    .tagline { color: var(--text-dim); font-size: 1.5rem; max-width: 700px; margin: 20px auto; }
+
+    /* Reveal on Scroll logic */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
     }
 
-    section { max-width: 1100px; margin: auto; padding: 80px 20px; }
-
-    h2 { 
-      font-size: 2.5rem;
-      color: var(--primary); 
-      margin-bottom: 40px; 
-      border-left: 5px solid var(--primary);
-      padding-left: 15px;
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .projects, .skills { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-      gap: 30px; 
-    }
+    section { max-width: 1100px; margin: auto; padding: 100px 20px; }
 
-    /* Glassmorphism Cards */
+    h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 30px; position: relative; }
+    h2::after { content: ''; width: 50px; height: 4px; background: var(--secondary); position: absolute; bottom: -10px; left: 0; }
+
+    /* About Section */
+    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+    .about-box { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+    .about-box h3 { color: var(--primary); margin-top: 0; }
+
+    /* Impact Stats */
+    .stats-bar { display: flex; justify-content: space-around; background: var(--primary); color: var(--dark); padding: 40px; border-radius: 20px; margin: 50px 0; font-weight: 800; text-align: center; }
+    .stat-item span { display: block; font-size: 2rem; }
+
+    /* Project Cards */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
     .card { 
-      background: rgba(255, 255, 255, 0.03); 
-      padding: 30px; 
-      border-radius: 20px; 
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
+      background: var(--card-bg); 
+      border-radius: 24px; 
+      overflow: hidden; 
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
     }
-
-    .card:hover {
-      transform: translateY(-10px);
-      background: rgba(255, 255, 255, 0.07);
-      border-color: var(--primary);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
-
-    .card h3 { margin-top: 0; color: var(--primary); }
-
-    .skills .card {
-      text-align: center;
-      padding: 20px;
-      font-weight: 600;
-      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-    }
-
+    .card:hover { transform: scale(1.03); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,210,255,0.2); }
+    .card-content { padding: 25px; }
+    
     .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
+      padding: 12px 25px;
       background: var(--primary);
       color: var(--dark);
-      border-radius: 50px;
-      font-weight: 700;
       text-decoration: none;
-      font-size: 0.9rem;
+      border-radius: 12px;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 15px;
     }
 
-    .btn:hover {
-      background: white;
-      transform: scale(1.05);
-    }
+    footer { text-align: center; padding: 60px; background: #070b14; color: var(--text-dim); }
 
-    #contact {
-      background: rgba(0, 210, 255, 0.05);
-      border-radius: 30px;
-      padding: 60px;
-      text-align: center;
-    }
-
-    #contact a { 
-      color: var(--primary); 
-      text-decoration: none; 
-      font-size: 1.2rem;
-      display: block;
-      margin: 10px 0;
-    }
-
-    #contact a:hover { color: white; }
-
-    footer { 
-      text-align: center; 
-      padding: 40px; 
-      background: #070b14; 
-      color: #64748b; 
-      font-size: 0.9rem;
-    }
-
-    img { border-radius: 12px; margin-bottom: 15px; opacity: 0.9; }
-    
-    /* Responsive adjustment */
-    @media (max-width: 768px) {
-      header h1 { font-size: 2.5rem; }
-    }
+    .nav-links { position: absolute; top: 30px; right: 50px; }
+    .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 0.9rem; }
   </style>
 </head>
 <body>
 
+<nav class="nav-links">
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
 <header>
-  <h1>Iyed Mbarki</h1>
-  <p>Data & BI Analyst turning complex numbers into <b>profitable narratives</b> using SQL, Power BI, and Python.</p>
+  <div class="hero-content">
+    <h1>Iyed Mbarki</h1>
+    <p class="tagline">Bridging the gap between <b>raw data</b> and <b>business strategy</b>.</p>
+    <a href="#projects" class="btn">View My Work</a>
+  </div>
 </header>
 
-<section id="projects">
-  <h2>Featured Projects</h2>
+<section id="about" class="reveal">
+  <h2>The Narrative Behind the Numbers</h2>
+  <p style="font-size: 1.2rem; color: var(--text-dim);">
+    I am a Data & Business Intelligence Analyst dedicated to uncovering the hidden stories within datasets. 
+    I don't just "clean data"—I build frameworks that allow decision-makers to see the future of their business clearly.
+  </p>
+  
+  <div class="about-grid">
+    <div class="about-box">
+      <h3>My Mission</h3>
+      <p>To replace "I think" with "I know." I help organizations move away from gut-feeling decisions by providing data-backed evidence.</p>
+    </div>
+    <div class="about-box">
+      <h3>The Process</h3>
+      <p>From complex SQL ETL pipelines to elegant Power BI visualizations, I ensure every step of the data journey is accurate and scalable.</p>
+    </div>
+    <div class="about-box">
+      <h3>The Impact</h3>
+      <p>Whether it's optimizing marketing spend or identifying supply chain bottlenecks, my goal is always <b>bottom-line ROI.</b></p>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar reveal">
+  <div class="stat-item"><span>50+</span> Projects Completed</div>
+  <div class="stat-item"><span>4+</span> Tools Mastered</div>
+  <div class="stat-item"><span>100%</span> Data Accuracy</div>
+</div>
+
+<section id="projects" class="reveal">
+  <h2>Portfolio Projects</h2>
   <div class="projects">
     <div class="card">
-      <img src="https://via.placeholder.com/400x250/1e293b/00d2ff?text=Sales+Insights" alt="Sales Dashboard" style="width:100%;">
-      <h3>Sales Intelligence Dashboard</h3>
-      <p>Interactive Power BI suite tracking real-time revenue leakage and regional performance KPIs.</p>
-      <a href="#" class="btn">Case Study →</a>
+      <div style="height:200px; background: #1e293b; display:flex; align-items:center; justify-content:center; color:var(--primary); font-weight:bold;">[SALES DASHBOARD IMAGE]</div>
+      <div class="card-content">
+        <h3>Executive Sales Intelligence</h3>
+        <p>A multi-page Power BI report analyzing $10M+ in revenue across global regions.</p>
+        <a href="#" class="btn">Case Study</a>
+      </div>
     </div>
     <div class="card">
-      <img src="https://via.placeholder.com/400x250/1e293b/00d2ff?text=Customer+Data" alt="Customer Analysis" style="width:100%;">
-      <h3>Customer Segmentation</h3>
-      <p>Python-driven RFM analysis to identify high-churn risk groups and VIP customer personas.</p>
-      <a href="#" class="btn">View Code →</a>
-    </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/400x250/1e293b/00d2ff?text=ETL+Process" alt="Data Cleaning" style="width:100%;">
-      <h3>Automated ETL Pipeline</h3>
-      <p>SQL & Python scripts that reduced data cleaning time by 40% for weekly retail reporting.</p>
-      <a href="#" class="btn">Explore →</a>
+      <div style="height:200px; background: #1e293b; display:flex; align-items:center; justify-content:center; color:var(--primary); font-weight:bold;">[PYTHON SCRIPT IMAGE]</div>
+      <div class="card-content">
+        <h3>Automated Cleaning Engine</h3>
+        <p>A Python library designed to handle missing values and outliers in retail datasets automatically.</p>
+        <a href="#" class="btn">GitHub Repo</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="skills">
-  <h2>Tech Stack</h2>
-  <div class="skills">
-    <div class="card">Expert SQL</div>
-    <div class="card">Power BI / Tableau</div>
-    <div class="card">Python (Pandas/Scikit)</div>
-    <div class="card">Advanced Excel / VBA</div>
-    <div class="card">Data Warehousing</div>
-    <div class="card">Predictive Modeling</div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Get In Touch</h2>
-  <p>Ready to optimize your data strategy?</p>
-  <a href="mailto:mbarkiiyeed@gmail.com">mbarkiiyeed@gmail.com</a>
-  <a href="https://github.com/Iyedos">GitHub Profile</a>
-  <a href="https://www.linkedin.com/in/iyed mbarki">LinkedIn Network</a>
+<section id="contact" class="reveal" style="text-align:center;">
+  <h2>Ready to start a project?</h2>
+  <p>I am currently open to freelance opportunities and full-time roles.</p>
+  <a href="mailto:mbarkiiyeed@gmail.com" class="btn" style="padding: 20px 50px; font-size: 1.2rem;">Email Me Directly</a>
 </section>
 
 <footer>
-  &copy; 2026 Iyed Mbarki | Built with precision and code.
+  &copy; 2026 Iyed Mbarki | Data Specialist | Built with HTML, CSS, & Data Logic.
 </footer>
+
+<script>
+  // Simple Reveal Animation Script
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 150;
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", reveal);
+  // Run once on load
+  reveal();
+</script>
 
 </body>
 </html>
