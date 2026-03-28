@@ -1,11 +1,11 @@
-# Iyeed Mbarky | Data & BI Analyst
+# Iyed Mbarki | Junior Data Analyst
 
-👋 Hello! I’m Iyeed, a Data Analyst & BI Analyst passionate about turning data into actionable insights.  
+👋 Hello! I’m Iyed, a Data Analyst & BI Analyst passionate about turning data into actionable insights.  
 
 ---
 
 ## 🚀 About Me
-- Experienced in SQL, Power BI, Tableau, Python, and Excel  
+- Experienced in SQL, Power BI, Python, and Excel  
 - Skilled in data cleaning, dashboards, and business reporting  
 - Focused on helping businesses make smarter, data-driven decisions  
 
@@ -13,7 +13,7 @@
 
 ## 🛠️ Skills
 - **Databases & SQL:** Querying, joins, aggregations, reporting  
-- **BI Tools:** Power BI, Tableau dashboards, KPIs  
+- **BI Tools:** Power BI, KPIs  
 - **Data Analysis:** Python (Pandas), Excel, data cleaning & visualization  
 - **Reporting & Presentation:** Interactive dashboards, charts, business insights  
 
@@ -30,6 +30,6 @@
 ---
 
 ## 📫 Contact Me
-- Email: [iyeed@example.com](mailto:iyeed@example.com)  
+- Email: [mbarkiiyeed@gmail.com](mailto:mbarkiiyeed@gmail.com)  
 - GitHub: [github.com/yourusername](https://github.com/yourusername)  
 - LinkedIn: [linkedin.com/in/yourusername](https://www.linkedin.com/in/yourusername)
