@@ -15,7 +15,6 @@
     }
 
     * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-
     html { scroll-behavior: smooth; }
 
     body { 
@@ -26,11 +25,10 @@
       overflow-x: hidden;
     }
 
-    /* Floating Animation for Header */
+    /* Floating Animation */
     @keyframes float {
-      0% { transform: translateY(0px); }
+      0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
     }
 
     header { 
@@ -55,20 +53,11 @@
 
     .tagline { color: var(--text-dim); font-size: 1.5rem; max-width: 700px; margin: 20px auto; }
 
-    /* Reveal on Scroll logic */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* Reveal Animation Classes */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
 
     section { max-width: 1100px; margin: auto; padding: 100px 20px; }
-
     h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 30px; position: relative; }
     h2::after { content: ''; width: 50px; height: 4px; background: var(--secondary); position: absolute; bottom: -10px; left: 0; }
 
@@ -77,19 +66,20 @@
     .about-box { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
     .about-box h3 { color: var(--primary); margin-top: 0; }
 
-    /* Impact Stats */
-    .stats-bar { display: flex; justify-content: space-around; background: var(--primary); color: var(--dark); padding: 40px; border-radius: 20px; margin: 50px 0; font-weight: 800; text-align: center; }
-    .stat-item span { display: block; font-size: 2rem; }
-
-    /* Project Cards */
-    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-    .card { 
-      background: var(--card-bg); 
-      border-radius: 24px; 
-      overflow: hidden; 
-      border: 1px solid rgba(255,255,255,0.1);
-      position: relative;
+    /* Progress Bars */
+    .skill-container { margin-bottom: 25px; }
+    .skill-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
+    .skill-bar-bg { background: rgba(255,255,255,0.1); height: 10px; border-radius: 10px; overflow: hidden; }
+    .skill-bar-fill { 
+      height: 100%; 
+      background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+      width: 0%; /* Triggered by JS */
+      transition: width 1.5s ease-in-out;
     }
+
+    /* Projects */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    .card { background: var(--card-bg); border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
     .card:hover { transform: scale(1.03); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,210,255,0.2); }
     .card-content { padding: 25px; }
     
@@ -104,16 +94,24 @@
       margin-top: 15px;
     }
 
+    .social-btn {
+      background: rgba(255,255,255,0.1);
+      color: white;
+      margin: 10px;
+    }
+    .social-btn:hover { background: var(--secondary); color: white; }
+
     footer { text-align: center; padding: 60px; background: #070b14; color: var(--text-dim); }
 
-    .nav-links { position: absolute; top: 30px; right: 50px; }
-    .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 0.9rem; }
+    nav { position: fixed; top: 0; width: 100%; padding: 20px 50px; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); z-index: 100; text-align: right; }
+    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 0.9rem; }
   </style>
 </head>
 <body>
 
-<nav class="nav-links">
+<nav>
   <a href="#about">About</a>
+  <a href="#skills">Skills</a>
   <a href="#projects">Projects</a>
   <a href="#contact">Contact</a>
 </nav>
@@ -121,89 +119,111 @@
 <header>
   <div class="hero-content">
     <h1>Iyed Mbarki</h1>
-    <p class="tagline">Bridging the gap between <b>raw data</b> and <b>business strategy</b>.</p>
-    <a href="#projects" class="btn">View My Work</a>
+    <p class="tagline">Data & BI Analyst | Solving Complex Problems with <b>Actionable Insights</b>.</p>
+    <div style="margin-top: 20px;">
+        <a href="#projects" class="btn">View My Work</a>
+        <a href="https://www.linkedin.com/in/iyed-mbarki-616b993b9/" target="_blank" class="btn social-btn">LinkedIn</a>
+    </div>
   </div>
 </header>
 
 <section id="about" class="reveal">
-  <h2>The Narrative Behind the Numbers</h2>
+  <h2>Turning Complexity into Clarity</h2>
   <p style="font-size: 1.2rem; color: var(--text-dim);">
-    I am a Data & Business Intelligence Analyst dedicated to uncovering the hidden stories within datasets. 
-    I don't just "clean data"—I build frameworks that allow decision-makers to see the future of their business clearly.
+    I specialize in transforming raw, messy data into interactive visual narratives that drive growth. My approach combines technical rigor with business intuition.
   </p>
   
   <div class="about-grid">
     <div class="about-box">
-      <h3>My Mission</h3>
-      <p>To replace "I think" with "I know." I help organizations move away from gut-feeling decisions by providing data-backed evidence.</p>
+      <h3>Strategic Analysis</h3>
+      <p>I identify trends that aren't visible on the surface, helping businesses stay ahead of the curve.</p>
     </div>
     <div class="about-box">
-      <h3>The Process</h3>
-      <p>From complex SQL ETL pipelines to elegant Power BI visualizations, I ensure every step of the data journey is accurate and scalable.</p>
+      <h3>ETL Excellence</h3>
+      <p>I build robust pipelines to ensure your data is clean, structured, and ready for modeling.</p>
     </div>
     <div class="about-box">
-      <h3>The Impact</h3>
-      <p>Whether it's optimizing marketing spend or identifying supply chain bottlenecks, my goal is always <b>bottom-line ROI.</b></p>
+      <h3>BI Visuals</h3>
+      <p>My dashboards don't just look good—they provide the "Why" behind every metric.</p>
     </div>
   </div>
 </section>
 
-<div class="stats-bar reveal">
-  <div class="stat-item"><span>50+</span> Projects Completed</div>
-  <div class="stat-item"><span>4+</span> Tools Mastered</div>
-  <div class="stat-item"><span>100%</span> Data Accuracy</div>
-</div>
+<section id="skills" class="reveal">
+  <h2>Technical Proficiency</h2>
+  <div class="skill-container">
+    <div class="skill-label"><span>SQL & Database Management</span><span>95%</span></div>
+    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+  </div>
+  <div class="skill-container">
+    <div class="skill-label"><span>Power BI & Tableau</span><span>90%</span></div>
+    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
+  </div>
+  <div class="skill-container">
+    <div class="skill-label"><span>Python (Pandas/Scikit)</span><span>85%</span></div>
+    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85%"></div></div>
+  </div>
+  <div class="skill-container">
+    <div class="skill-label"><span>Excel & Data Cleaning</span><span>100%</span></div>
+    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="100%"></div></div>
+  </div>
+</section>
 
 <section id="projects" class="reveal">
-  <h2>Portfolio Projects</h2>
+  <h2>Featured Portfoilo</h2>
   <div class="projects">
     <div class="card">
-      <div style="height:200px; background: #1e293b; display:flex; align-items:center; justify-content:center; color:var(--primary); font-weight:bold;">[SALES DASHBOARD IMAGE]</div>
+      <div style="height:200px; background: #1e293b; display:flex; align-items:center; justify-content:center; color:var(--primary); font-weight:bold;">[SALES DASHBOARD]</div>
       <div class="card-content">
-        <h3>Executive Sales Intelligence</h3>
-        <p>A multi-page Power BI report analyzing $10M+ in revenue across global regions.</p>
-        <a href="#" class="btn">Case Study</a>
+        <h3>Global Sales Intelligence</h3>
+        <p>A Power BI ecosystem tracking regional performance and profit margins.</p>
+        <a href="#" class="btn">Explore Case Study</a>
       </div>
     </div>
     <div class="card">
-      <div style="height:200px; background: #1e293b; display:flex; align-items:center; justify-content:center; color:var(--primary); font-weight:bold;">[PYTHON SCRIPT IMAGE]</div>
+      <div style="height:200px; background: #1e293b; display:flex; align-items:center; justify-content:center; color:var(--primary); font-weight:bold;">[PYTHON PROJECT]</div>
       <div class="card-content">
-        <h3>Automated Cleaning Engine</h3>
-        <p>A Python library designed to handle missing values and outliers in retail datasets automatically.</p>
-        <a href="#" class="btn">GitHub Repo</a>
+        <h3>Predictive Churn Model</h3>
+        <p>Using Python to identify at-risk customers with 88% accuracy.</p>
+        <a href="https://github.com/Iyedos" class="btn">View on GitHub</a>
       </div>
     </div>
   </div>
 </section>
 
 <section id="contact" class="reveal" style="text-align:center;">
-  <h2>Ready to start a project?</h2>
-  <p>I am currently open to freelance opportunities and full-time roles.</p>
-  <a href="mailto:mbarkiiyeed@gmail.com" class="btn" style="padding: 20px 50px; font-size: 1.2rem;">Email Me Directly</a>
+  <h2>Let's Talk Data</h2>
+  <p>I'm always looking for interesting projects or professional connections.</p>
+  <a href="mailto:mbarkiiyeed@gmail.com" class="btn" style="padding: 15px 40px; font-size: 1.1rem;">Email Me</a>
+  <a href="https://www.linkedin.com/in/iyed-mbarki-616b993b9/" target="_blank" class="btn social-btn">LinkedIn Profile</a>
 </section>
 
 <footer>
-  &copy; 2026 Iyed Mbarki | Data Specialist | Built with HTML, CSS, & Data Logic.
+  &copy; 2026 Iyed Mbarki | Data & BI Analyst
 </footer>
 
 <script>
-  // Simple Reveal Animation Script
   function reveal() {
     var reveals = document.querySelectorAll(".reveal");
-    for (var i = 0; i < reveals.length; i++) {
-      var windowHeight = window.innerHeight;
-      var elementTop = reveals[i].getBoundingClientRect().top;
-      var elementVisible = 150;
-      if (elementTop < windowHeight - elementVisible) {
-        reveals[i].classList.add("active");
-      }
+    var bars = document.querySelectorAll(".skill-bar-fill");
+
+    // Reveal sections
+    reveals.forEach(el => {
+      var elementTop = el.getBoundingClientRect().top;
+      if (elementTop < window.innerHeight - 100) el.classList.add("active");
+    });
+
+    // Fill bars when Skills section is visible
+    var skillSection = document.querySelector("#skills");
+    if(skillSection.getBoundingClientRect().top < window.innerHeight - 100) {
+        bars.forEach(bar => {
+            bar.style.width = bar.getAttribute("data-width");
+        });
     }
   }
 
   window.addEventListener("scroll", reveal);
-  // Run once on load
-  reveal();
+  reveal(); // Initial run
 </script>
 
 </body>
