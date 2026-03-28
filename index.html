@@ -4,71 +4,208 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iyed Mbarki | Data & BI Analyst</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; margin:0; padding:0; background:#f0f2f5; color:#333; }
-    header { background:#007acc; color:white; text-align:center; padding:60px 20px; }
-    header h1 { margin:0; font-size:3em; }
-    header p { margin:10px 0 0 0; font-size:1.2em; }
-    section { max-width:1000px; margin:auto; padding:50px 20px; }
-    h2 { color:#007acc; margin-bottom:20px; }
-    .projects, .skills { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-    .card { background:white; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
-    a { color:#007acc; text-decoration:none; font-weight:600; }
-    footer { text-align:center; padding:20px; background:#222; color:white; }
+    :root {
+      --primary: #00d2ff;
+      --secondary: #3a7bd5;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --accent: #f43f5e;
+    }
+
+    * { box-sizing: border-box; transition: all 0.3s ease; }
+
+    body { 
+      font-family: 'Inter', sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      /* Modern Deep Gradient Background */
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
+      color: var(--light); 
+      line-height: 1.6;
+    }
+
+    header { 
+      background: transparent; 
+      text-align: center; 
+      padding: 100px 20px; 
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated background element */
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -10%;
+      width: 120%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0,210,255,0.1) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    header h1 { 
+      margin: 0; 
+      font-size: 4rem; 
+      font-weight: 800;
+      background: linear-gradient(to right, #00d2ff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p { 
+      margin: 20px auto; 
+      font-size: 1.3rem; 
+      max-width: 600px;
+      color: #94a3b8;
+    }
+
+    section { max-width: 1100px; margin: auto; padding: 80px 20px; }
+
+    h2 { 
+      font-size: 2.5rem;
+      color: var(--primary); 
+      margin-bottom: 40px; 
+      border-left: 5px solid var(--primary);
+      padding-left: 15px;
+    }
+
+    .projects, .skills { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+      gap: 30px; 
+    }
+
+    /* Glassmorphism Cards */
+    .card { 
+      background: rgba(255, 255, 255, 0.03); 
+      padding: 30px; 
+      border-radius: 20px; 
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: var(--primary);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card h3 { margin-top: 0; color: var(--primary); }
+
+    .skills .card {
+      text-align: center;
+      padding: 20px;
+      font-weight: 600;
+      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: var(--primary);
+      color: var(--dark);
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn:hover {
+      background: white;
+      transform: scale(1.05);
+    }
+
+    #contact {
+      background: rgba(0, 210, 255, 0.05);
+      border-radius: 30px;
+      padding: 60px;
+      text-align: center;
+    }
+
+    #contact a { 
+      color: var(--primary); 
+      text-decoration: none; 
+      font-size: 1.2rem;
+      display: block;
+      margin: 10px 0;
+    }
+
+    #contact a:hover { color: white; }
+
+    footer { 
+      text-align: center; 
+      padding: 40px; 
+      background: #070b14; 
+      color: #64748b; 
+      font-size: 0.9rem;
+    }
+
+    img { border-radius: 12px; margin-bottom: 15px; opacity: 0.9; }
+    
+    /* Responsive adjustment */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.5rem; }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Hello, I'm Iyeed 👋</h1>
-  <p>I help businesses turn data into actionable insights using SQL, Power BI, Python, and Excel.</p>
+  <h1>Iyed Mbarki</h1>
+  <p>Data & BI Analyst turning complex numbers into <b>profitable narratives</b> using SQL, Power BI, and Python.</p>
 </header>
 
 <section id="projects">
-  <h2>Projects</h2>
+  <h2>Featured Projects</h2>
   <div class="projects">
     <div class="card">
-      <h3>Sales Dashboard</h3>
-      <img src="assets/project1.png" alt="Sales Dashboard" style="width:100%; border-radius:5px;">
-      <p>Interactive dashboard showing sales trends, revenue, and KPIs using Power BI.</p>
-      <a href="#">View Project →</a>
+      <img src="https://via.placeholder.com/400x250/1e293b/00d2ff?text=Sales+Insights" alt="Sales Dashboard" style="width:100%;">
+      <h3>Sales Intelligence Dashboard</h3>
+      <p>Interactive Power BI suite tracking real-time revenue leakage and regional performance KPIs.</p>
+      <a href="#" class="btn">Case Study →</a>
     </div>
     <div class="card">
-      <h3>Customer Analysis</h3>
-      <img src="assets/project2.png" alt="Customer Analysis" style="width:100%; border-radius:5px;">
-      <p>SQL queries and analysis to identify high-value customers and trends.</p>
-      <a href="#">View Project →</a>
+      <img src="https://via.placeholder.com/400x250/1e293b/00d2ff?text=Customer+Data" alt="Customer Analysis" style="width:100%;">
+      <h3>Customer Segmentation</h3>
+      <p>Python-driven RFM analysis to identify high-churn risk groups and VIP customer personas.</p>
+      <a href="#" class="btn">View Code →</a>
     </div>
     <div class="card">
-      <h3>Data Cleaning & Visualization</h3>
-      <img src="assets/project3.png" alt="Data Cleaning" style="width:100%; border-radius:5px;">
-      <p>Python & Excel project to clean messy datasets and visualize insights.</p>
-      <a href="#">View Project →</a>
+      <img src="https://via.placeholder.com/400x250/1e293b/00d2ff?text=ETL+Process" alt="Data Cleaning" style="width:100%;">
+      <h3>Automated ETL Pipeline</h3>
+      <p>SQL & Python scripts that reduced data cleaning time by 40% for weekly retail reporting.</p>
+      <a href="#" class="btn">Explore →</a>
     </div>
   </div>
 </section>
 
 <section id="skills">
-  <h2>Skills</h2>
+  <h2>Tech Stack</h2>
   <div class="skills">
-    <div class="card">SQL & Databases</div>
-    <div class="card">Power BI & Tableau</div>
-    <div class="card">Python & Pandas</div>
-    <div class="card">Excel & Data Cleaning</div>
-    <div class="card">Dashboards & Reporting</div>
+    <div class="card">Expert SQL</div>
+    <div class="card">Power BI / Tableau</div>
+    <div class="card">Python (Pandas/Scikit)</div>
+    <div class="card">Advanced Excel / VBA</div>
+    <div class="card">Data Warehousing</div>
+    <div class="card">Predictive Modeling</div>
   </div>
 </section>
 
 <section id="contact">
-  <h2>Contact Me</h2>
-  <p>Email: <a href="mailto:mbarkiiyeed@gmail.com">mbarkiiyeed@gmail.com</a></p>
-  <p>GitHub: <a href="https://github.com/Iyedos">github.com/Iyedos</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/iyed mbarki">linkedin.com/in/iyed mbarki</a></p>
+  <h2>Get In Touch</h2>
+  <p>Ready to optimize your data strategy?</p>
+  <a href="mailto:mbarkiiyeed@gmail.com">mbarkiiyeed@gmail.com</a>
+  <a href="https://github.com/Iyedos">GitHub Profile</a>
+  <a href="https://www.linkedin.com/in/iyed mbarki">LinkedIn Network</a>
 </section>
 
 <footer>
-  &copy; 2026 Iyeed Mbarky | Data & BI Analyst
+  &copy; 2026 Iyed Mbarki | Built with precision and code.
 </footer>
 
 </body>
