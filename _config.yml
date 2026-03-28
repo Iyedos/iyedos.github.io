@@ -1,0 +1,9 @@
+title: "Iyeed Mbarky | Data & BI Analyst"
+email: "iyeed@example.com"
+description: "Portfolio of Iyeed Mbarky – Data Analyst & BI Analyst"
+baseurl: "" # leave empty for root domain
+url: "https://yourusername.github.io" # replace with your GitHub Pages URL
+
+theme: minima # GitHub Pages built-in theme
+plugins:
+  - jekyll-feed
