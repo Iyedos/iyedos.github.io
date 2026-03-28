@@ -12,9 +12,10 @@
       --dark: #070b14;
       --card-bg: rgba(255, 255, 255, 0.05);
       --text-dim: #94a3b8;
+      --accent: #f43f5e;
     }
 
-    * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    * { box-sizing: border-box; transition: all 0.3s ease; }
     html { scroll-behavior: smooth; }
 
     body { 
@@ -25,11 +26,8 @@
       overflow-x: hidden;
     }
 
-    /* Floating Animation */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-    }
+    /* Floating Header Animation */
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
 
     header { 
       height: 100vh;
@@ -38,192 +36,174 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+      background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
     }
 
-    .hero-content { animation: float 6s ease-in-out infinite; }
-
     header h1 { 
-      font-size: clamp(3rem, 10vw, 5rem); 
+      font-size: clamp(3rem, 10vw, 5.5rem); 
       margin: 0;
-      background: linear-gradient(to right, #00d2ff, #3a7bd5);
+      background: linear-gradient(to right, #00d2ff, #fff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .tagline { color: var(--text-dim); font-size: 1.5rem; max-width: 700px; margin: 20px auto; }
+    /* Primary Action Buttons */
+    .hero-btns { margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
 
-    /* Reveal Animation Classes */
+    .btn {
+      padding: 15px 30px;
+      border-radius: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-main { background: var(--primary); color: var(--dark); }
+    .btn-main:hover { background: white; transform: scale(1.05); }
+
+    .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: var(--dark); }
+
+    .btn-cv { background: var(--accent); color: white; box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3); }
+    .btn-cv:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(244, 63, 94, 0.5); }
+
+    /* Reveal logic */
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
-    section { max-width: 1100px; margin: auto; padding: 100px 20px; }
-    h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 30px; position: relative; }
-    h2::after { content: ''; width: 50px; height: 4px; background: var(--secondary); position: absolute; bottom: -10px; left: 0; }
+    section { max-width: 1100px; margin: auto; padding: 80px 20px; }
 
-    /* About Section */
-    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-    .about-box { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-    .about-box h3 { color: var(--primary); margin-top: 0; }
-
-    /* Progress Bars */
-    .skill-container { margin-bottom: 25px; }
-    .skill-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
-    .skill-bar-bg { background: rgba(255,255,255,0.1); height: 10px; border-radius: 10px; overflow: hidden; }
-    .skill-bar-fill { 
-      height: 100%; 
-      background: linear-gradient(90deg, var(--primary), var(--secondary)); 
-      width: 0%; /* Triggered by JS */
-      transition: width 1.5s ease-in-out;
+    /* Contact Grid for Clients */
+    .contact-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+      gap: 15px; 
+      margin-top: 40px; 
     }
 
-    /* Projects */
-    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-    .card { background: var(--card-bg); border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-    .card:hover { transform: scale(1.03); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,210,255,0.2); }
-    .card-content { padding: 25px; }
-    
-    .btn {
-      padding: 12px 25px;
-      background: var(--primary);
-      color: var(--dark);
+    .contact-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
       text-decoration: none;
-      border-radius: 12px;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 15px;
-    }
-
-    .social-btn {
-      background: rgba(255,255,255,0.1);
       color: white;
-      margin: 10px;
     }
-    .social-btn:hover { background: var(--secondary); color: white; }
 
-    footer { text-align: center; padding: 60px; background: #070b14; color: var(--text-dim); }
+    .contact-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--primary);
+      transform: translateY(-5px);
+    }
 
-    nav { position: fixed; top: 0; width: 100%; padding: 20px 50px; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); z-index: 100; text-align: right; }
-    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 0.9rem; }
+    .contact-card h4 { margin: 10px 0 5px; color: var(--primary); }
+    .contact-card p { font-size: 0.8rem; color: var(--text-dim); margin: 0; }
+
+    footer { text-align: center; padding: 60px; color: var(--text-dim); font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); }
+
+    nav { position: fixed; top: 0; width: 100%; padding: 20px 50px; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(15px); z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+    nav .logo { font-weight: 800; color: var(--primary); font-size: 1.2rem; }
+    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
+  <div class="logo">IM.</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Work</a>
+    <a href="#contact">Contact</a>
+    <a href="cv.pdf" download style="color: var(--accent);">Download CV</a>
+  </div>
 </nav>
 
 <header>
   <div class="hero-content">
     <h1>Iyed Mbarki</h1>
-    <p class="tagline">Data & BI Analyst | Solving Complex Problems with <b>Actionable Insights</b>.</p>
-    <div style="margin-top: 20px;">
-        <a href="#projects" class="btn">View My Work</a>
-        <a href="https://www.linkedin.com/in/iyed-mbarki-616b993b9/" target="_blank" class="btn social-btn">LinkedIn</a>
+    <p style="color: var(--text-dim); font-size: 1.4rem; max-width: 700px; margin: 20px auto;">
+        High-impact <b>Data Analysis</b> & <b>Business Intelligence</b> solutions for global brands.
+    </p>
+    <div class="hero-btns">
+        <a href="#contact" class="btn btn-main">Start a Project</a>
+        <a href="cv.pdf" download class="btn btn-cv">Download My CV</a>
+        <a href="https://github.com/Iyedos" target="_blank" class="btn btn-outline">View GitHub</a>
     </div>
   </div>
 </header>
 
 <section id="about" class="reveal">
-  <h2>Turning Complexity into Clarity</h2>
-  <p style="font-size: 1.2rem; color: var(--text-dim);">
-    I specialize in transforming raw, messy data into interactive visual narratives that drive growth. My approach combines technical rigor with business intuition.
-  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+    <div style="flex: 1; min-width: 300px;">
+        <h2 style="color: var(--primary); font-size: 2.5rem;">Data Specialist & Strategist</h2>
+        <p style="line-height: 1.8; color: var(--text-dim);">
+            I don't just build dashboards; I build clarity. With a focus on the Tunisian and international freelance markets, I help businesses transform chaotic datasets into streamlined, profitable operations. My expertise spans from <b>SQL architecture</b> to <b>Advanced Predictive Analytics</b>.
+        </p>
+        <a href="#contact" style="color: var(--primary); text-decoration: none; font-weight: bold;">Let's build something together →</a>
+    </div>
+    <div style="flex: 1; min-width: 300px; background: var(--card-bg); padding: 40px; border-radius: 30px;">
+        <h3 style="margin-top: 0;">What I do:</h3>
+        <ul style="list-style: none; padding: 0; color: var(--text-dim);">
+            <li style="margin-bottom: 15px;">✅ <b>Strategic BI:</b> Custom Power BI/Tableau reports.</li>
+            <li style="margin-bottom: 15px;">✅ <b>Data Engineering:</b> Python & SQL ETL pipelines.</li>
+            <li style="margin-bottom: 15px;">✅ <b>Business Audit:</b> Finding growth opportunities in your data.</li>
+        </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <h2 style="text-align: center;">Get In Touch</h2>
+  <p style="text-align: center; color: var(--text-dim); margin-bottom: 40px;">Choose your preferred platform to start a conversation.</p>
   
-  <div class="about-grid">
-    <div class="about-box">
-      <h3>Strategic Analysis</h3>
-      <p>I identify trends that aren't visible on the surface, helping businesses stay ahead of the curve.</p>
-    </div>
-    <div class="about-box">
-      <h3>ETL Excellence</h3>
-      <p>I build robust pipelines to ensure your data is clean, structured, and ready for modeling.</p>
-    </div>
-    <div class="about-box">
-      <h3>BI Visuals</h3>
-      <p>My dashboards don't just look good—they provide the "Why" behind every metric.</p>
-    </div>
+  <div class="contact-grid">
+    <a href="mailto:mbarkiiyeed@gmail.com" class="contact-card">
+        <h4>Email</h4>
+        <p>Direct Inquiry</p>
+    </a>
+    <a href="https://www.linkedin.com/in/iyed-mbarki-616b993b9/" target="_blank" class="contact-card">
+        <h4>LinkedIn</h4>
+        <p>Professional Network</p>
+    </a>
+    <a href="https://github.com/Iyedos" target="_blank" class="contact-card">
+        <h4>GitHub</h4>
+        <p>Code Portfolio</p>
+    </a>
+    <a href="https://www.upwork.com/freelancers/~01116d78d568e0ab87" target="_blank" class="contact-card">
+        <h4>Upwork</h4>
+        <p>Global Freelance</p>
+    </a>
+    <a href="https://tunisiefreelance.tn/fr/profile/iyed-m-0d402a" target="_blank" class="contact-card">
+        <h4>Freelance.tn</h4>
+        <p>Local Expert</p>
+    </a>
+    <a href="https://instagram.com/iyeedmbarki" target="_blank" class="contact-card">
+        <h4>Instagram</h4>
+        <p>Quick Chat</p>
+    </a>
   </div>
-</section>
-
-<section id="skills" class="reveal">
-  <h2>Technical Proficiency</h2>
-  <div class="skill-container">
-    <div class="skill-label"><span>SQL & Database Management</span><span>95%</span></div>
-    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
-  </div>
-  <div class="skill-container">
-    <div class="skill-label"><span>Power BI & Tableau</span><span>90%</span></div>
-    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
-  </div>
-  <div class="skill-container">
-    <div class="skill-label"><span>Python (Pandas/Scikit)</span><span>85%</span></div>
-    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85%"></div></div>
-  </div>
-  <div class="skill-container">
-    <div class="skill-label"><span>Excel & Data Cleaning</span><span>100%</span></div>
-    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="100%"></div></div>
-  </div>
-</section>
-
-<section id="projects" class="reveal">
-  <h2>Featured Portfoilo</h2>
-  <div class="projects">
-    <div class="card">
-      <div style="height:200px; background: #1e293b; display:flex; align-items:center; justify-content:center; color:var(--primary); font-weight:bold;">[SALES DASHBOARD]</div>
-      <div class="card-content">
-        <h3>Global Sales Intelligence</h3>
-        <p>A Power BI ecosystem tracking regional performance and profit margins.</p>
-        <a href="#" class="btn">Explore Case Study</a>
-      </div>
-    </div>
-    <div class="card">
-      <div style="height:200px; background: #1e293b; display:flex; align-items:center; justify-content:center; color:var(--primary); font-weight:bold;">[PYTHON PROJECT]</div>
-      <div class="card-content">
-        <h3>Predictive Churn Model</h3>
-        <p>Using Python to identify at-risk customers with 88% accuracy.</p>
-        <a href="https://github.com/Iyedos" class="btn">View on GitHub</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="reveal" style="text-align:center;">
-  <h2>Let's Talk Data</h2>
-  <p>I'm always looking for interesting projects or professional connections.</p>
-  <a href="mailto:mbarkiiyeed@gmail.com" class="btn" style="padding: 15px 40px; font-size: 1.1rem;">Email Me</a>
-  <a href="https://www.linkedin.com/in/iyed-mbarki-616b993b9/" target="_blank" class="btn social-btn">LinkedIn Profile</a>
 </section>
 
 <footer>
-  &copy; 2026 Iyed Mbarki | Data & BI Analyst
+  &copy; 2026 Iyed Mbarki | Data Specialist | 
+  <a href="cv.pdf" download style="color: var(--primary); text-decoration: none; margin-left: 10px;">Download CV</a>
 </footer>
 
 <script>
   function reveal() {
     var reveals = document.querySelectorAll(".reveal");
-    var bars = document.querySelectorAll(".skill-bar-fill");
-
-    // Reveal sections
     reveals.forEach(el => {
       var elementTop = el.getBoundingClientRect().top;
       if (elementTop < window.innerHeight - 100) el.classList.add("active");
     });
-
-    // Fill bars when Skills section is visible
-    var skillSection = document.querySelector("#skills");
-    if(skillSection.getBoundingClientRect().top < window.innerHeight - 100) {
-        bars.forEach(bar => {
-            bar.style.width = bar.getAttribute("data-width");
-        });
-    }
   }
-
   window.addEventListener("scroll", reveal);
-  reveal(); // Initial run
+  reveal();
 </script>
 
 </body>
