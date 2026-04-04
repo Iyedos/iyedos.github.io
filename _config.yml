@@ -1,9 +1,0 @@
-title: "Iyeed Mbarky | Data & BI Analyst"
-email: "iyeed@example.com"
-description: "Portfolio of Iyeed Mbarky – Data & BI Analyst"
-baseurl: ""
-url: "https://yourusername.github.io"
-
-theme: minimal-mistakes-jekyll
-plugins:
-  - jekyll-feed
