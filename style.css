@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #111;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(45deg, #ff004f, #6a00ff);
+}
+
+nav a {
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    padding: 50px;
+}
+
+.project {
+    background: #1e1e1e;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #000;
+}
