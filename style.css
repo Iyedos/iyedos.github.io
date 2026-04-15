@@ -1881,4 +1881,124 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .timeline-text { max-width: 700px; }
 
+  /*-----------------------------------*\
+  #SKILLS SECTION (MODERN CARD GRID)
+\*-----------------------------------*/
+
+#skills {
+  padding: 30px 20px;
+}
+
+/* top labels */
+.eyebrow {
+  display: inline-block;
+  font-size: var(--fs-8);
+  font-weight: var(--fw-600);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange-yellow-crayola);
+  margin-bottom: 10px;
+}
+
+.sec-title {
+  font-size: var(--fs-2);
+  color: var(--white-2);
+  margin-bottom: 25px;
+  line-height: 1.2;
+}
+
+.sec-title em {
+  color: var(--orange-yellow-crayola);
+  font-style: normal;
+}
+
+/* GRID */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* CATEGORY CARD */
+.skill-cat {
+  position: relative;
+  background: var(--border-gradient-onyx);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: var(--shadow-2);
+  overflow: hidden;
+  transition: transform var(--transition-1);
+}
+
+.skill-cat::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.skill-cat:hover {
+  transform: translateY(-5px);
+}
+
+/* HEADER */
+.sc-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.sc-ico {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--onyx);
+  border-radius: 10px;
+  font-size: 18px;
+  box-shadow: var(--shadow-1);
+}
+
+.sc-name {
+  color: var(--white-2);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+}
+
+/* TAGS WRAPPER */
+.stags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* TAG */
+.stag {
+  font-size: var(--fs-8);
+  color: var(--light-gray);
+  background: var(--onyx);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--jet);
+  transition: var(--transition-1);
+}
+
+/* highlighted tags */
+.stag.hi {
+  color: var(--orange-yellow-crayola);
+  border-color: var(--orange-yellow-crayola);
+  background: hsla(45, 100%, 72%, 0.08);
+}
+
+/* hover effect */
+.stag:hover {
+  transform: translateY(-2px);
+  border-color: var(--orange-yellow-crayola);
+  color: var(--white-2);
+}
+
 }
