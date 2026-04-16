@@ -149,12 +149,9 @@ const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
 navigationLinks.forEach(link => {
+  link.addEventListener("click", function () {
 
-  link.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    // IMPORTANT FIX: use data-target (your HTML)
-    const targetPage = this.dataset.target;
+    const targetPage = this.dataset.page;
 
     pages.forEach(page => {
       page.classList.toggle("active", page.dataset.page === targetPage);
@@ -165,5 +162,4 @@ navigationLinks.forEach(link => {
 
     window.scrollTo(0, 0);
   });
-
 });
