@@ -1,10 +1,10 @@
 'use strict';
 
 
-
 // element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
+const elementToggleFunc = function (elem) {
+  elem.classList.toggle("active");
+};
 
 
 // sidebar variables
@@ -12,7 +12,9 @@ const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
 // sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
+sidebarBtn.addEventListener("click", function () {
+  elementToggleFunc(sidebar);
+});
 
 
 
@@ -22,7 +24,7 @@ const modalContainer = document.querySelector("[data-modal-container]");
 const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
 const overlay = document.querySelector("[data-overlay]");
 
-// modal variable
+// modal variables
 const modalImg = document.querySelector("[data-modal-img]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalText = document.querySelector("[data-modal-text]");
@@ -31,7 +33,7 @@ const modalText = document.querySelector("[data-modal-text]");
 const testimonialsModalFunc = function () {
   modalContainer.classList.toggle("active");
   overlay.classList.toggle("active");
-}
+};
 
 // add click event to all modal items
 for (let i = 0; i < testimonialsItem.length; i++) {
@@ -49,7 +51,7 @@ for (let i = 0; i < testimonialsItem.length; i++) {
 
 }
 
-// add click event to modal close button
+// close modal
 modalCloseBtn.addEventListener("click", testimonialsModalFunc);
 overlay.addEventListener("click", testimonialsModalFunc);
 
@@ -61,21 +63,26 @@ const selectItems = document.querySelectorAll("[data-select-item]");
 const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-select.addEventListener("click", function () { elementToggleFunc(this); });
+select.addEventListener("click", function () {
+  elementToggleFunc(this);
+});
 
-// add event in all select items
+// select items
 for (let i = 0; i < selectItems.length; i++) {
   selectItems[i].addEventListener("click", function () {
 
     let selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
+
     elementToggleFunc(select);
     filterFunc(selectedValue);
 
   });
 }
 
-// filter variables
+
+
+// filter logic
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
@@ -84,17 +91,19 @@ const filterFunc = function (selectedValue) {
 
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
+
     } else if (selectedValue === filterItems[i].dataset.category) {
       filterItems[i].classList.add("active");
+
     } else {
       filterItems[i].classList.remove("active");
     }
 
   }
 
-}
+};
 
-// add event in all filter button items for large screen
+// filter buttons (desktop)
 let lastClickedBtn = filterBtn[0];
 
 for (let i = 0; i < filterBtn.length; i++) {
@@ -103,6 +112,7 @@ for (let i = 0; i < filterBtn.length; i++) {
 
     let selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
+
     filterFunc(selectedValue);
 
     lastClickedBtn.classList.remove("active");
@@ -115,16 +125,14 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 
 
-// contact form variables
+// contact form
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
 
-    // check form validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
@@ -136,26 +144,26 @@ for (let i = 0; i < formInputs.length; i++) {
 
 
 
-// page navigation variables
+// page navigation (FIXED)
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
 navigationLinks.forEach(link => {
-  link.addEventListener("click", function () {
 
-    const clickedText = this.innerHTML.trim().toLowerCase();
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // IMPORTANT FIX: use data-target (your HTML)
+    const targetPage = this.dataset.target;
 
     pages.forEach(page => {
-      const match = page.dataset.page === clickedText;
-      page.classList.toggle("active", match);
+      page.classList.toggle("active", page.dataset.page === targetPage);
     });
 
-    navigationLinks.forEach(nav => {
-      nav.classList.remove("active");
-    });
-
+    navigationLinks.forEach(nav => nav.classList.remove("active"));
     this.classList.add("active");
 
     window.scrollTo(0, 0);
   });
+
 });
