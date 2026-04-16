@@ -144,9 +144,9 @@ for (let i = 0; i < formInputs.length; i++) {
 
 
 
-// page navigation (FIXED)
+// page navigation
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
+const pages = document.querySelectorAll("article[data-page]"); // FIX: only match <article> elements
 
 navigationLinks.forEach(link => {
   link.addEventListener("click", function () {
