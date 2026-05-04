@@ -5,970 +5,719 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iyedos | Personal Portfolio</title>
-
-  <!--
-    - favicon
-  -->
+  <title>Iyed Mbarki | Data Analyst</title>
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
-
-  <!--
-    - custom css link
-  -->
   <link rel="stylesheet" href="style.css">
-
-  <!--
-    - google font link
-  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <!--
-    - #MAIN
-  -->
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <div class="site-name">
+    <span class="logo-dot"></span>
+    Iyedos
+  </div>
+
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-name">ALO<span class="lo-accent">ALO</span></div>
+      <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+      <span class="loader-text">Initializing portfolio...</span>
+    </div>
+  </div>
 
   <main>
 
-    <!--
-      - #SIDEBAR
-    -->
-
+    <!-- ====== SIDEBAR ====== -->
     <aside class="sidebar" data-sidebar>
 
       <div class="sidebar-info">
-
         <figure class="avatar-box">
-          <img src="./images/ena.png" alt="Iyedos" width="80">
+          <img src="./images/ena.png" alt="Iyed Mbarki" width="90">
+          <div class="avatar-ring"></div>
+          <div class="avatar-glow"></div>
         </figure>
 
         <div class="info-content">
           <h1 class="name" title="Iyed Mbarki">Iyed Mbarki</h1>
-
-          <p class="title">Data Analyst | BI Student</p>
+          <p class="title">Data Analyst · BI Student</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
           <span>Show Contacts</span>
-
           <ion-icon name="chevron-down"></ion-icon>
         </button>
-
       </div>
 
       <div class="sidebar-info_more">
-
         <div class="separator"></div>
 
         <ul class="contacts-list">
-
           <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title">Email</p>
-
               <a href="mailto:mbarkiiyeed@gmail.com" class="contact-link">mbarkiiyeed@gmail.com</a>
             </div>
-
           </li>
-
           <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
+            <div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title">Phone</p>
-
-              <a href="tel:+216 28 544 846" class="contact-link">+216 28 544 846</a>
+              <a href="tel:+21628544846" class="contact-link">+216 28 544 846</a>
             </div>
-
           </li>
-
           <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-
+            <div class="icon-box"><ion-icon name="calendar-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title">Birthday</p>
-
               <time datetime="2005-06-01">June 1, 2005</time>
             </div>
-
           </li>
-
           <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
+            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title">Location</p>
-
               <address>Manouba, Tunisia</address>
             </div>
-
           </li>
-
         </ul>
 
         <div class="separator"></div>
 
         <ul class="social-list">
-
           <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
+            <a href="https://github.com/Iyedos" class="social-link" target="_blank" aria-label="GitHub">
+              <ion-icon name="logo-github"></ion-icon>
             </a>
           </li>
-
           <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
+            <a href="https://www.linkedin.com/in/iyedmbarki" class="social-link" target="_blank" aria-label="LinkedIn">
+              <ion-icon name="logo-linkedin"></ion-icon>
             </a>
           </li>
-
           <li class="social-item">
-            <a href="#" class="social-link">
+            <a href="https://instagram.com/iyeedmbarki" class="social-link" target="_blank" aria-label="Instagram">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
-
         </ul>
-
       </div>
 
     </aside>
 
-
-
-
-
-    <!--
-      - #main-content
-    -->
-
+    <!-- ====== MAIN CONTENT ====== -->
     <div class="main-content">
 
-      <!--
-        - #NAVBAR
-      -->
-
+      <!-- NAVBAR -->
       <nav class="navbar">
-
         <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link data-page="about">About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-page="projects">Projects</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-page="skills">Skills</button>
-          </li>
-
-          
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-page="resume">Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-page="contact">Contact</button>
-          </li>
-
+          <li class="navbar-item"><a href="#home" class="navbar-link active" data-nav>Home</a></li>
+          <li class="navbar-item"><a href="#about" class="navbar-link" data-nav>About</a></li>
+          <li class="navbar-item"><a href="#projects" class="navbar-link" data-nav>Projects</a></li>
+          <li class="navbar-item"><a href="#skills" class="navbar-link" data-nav>Skills</a></li>
+          <li class="navbar-item"><a href="#contact" class="navbar-link" data-nav>Contact</a></li>
         </ul>
-
       </nav>
 
+      <!-- ====== HOME ====== -->
+      <section id="home" class="section home-section">
 
+        <div class="home-hero-row">
 
+          <!-- LEFT -->
+          <div class="home-content">
 
+            <div class="home-eyebrow reveal-up">
+              <span class="eyebrow-dot"></span>
+              Available for opportunities
+            </div>
 
-      <!--
-        - #ABOUT
-      -->
+            <h1 class="home-title reveal-up" style="--delay:0.1s">
+              <span class="title-line">Decoding Data.</span>
+              <span class="title-line accent">Delivering Clarity.</span>
+            </h1>
 
-      <article class="about  active" data-page="about">
+            <p class="home-subtitle reveal-up" style="--delay:0.2s">
+              Data Analyst &amp; Business Intelligence Student
+            </p>
 
-        <header>
-          <h2 class="h2 article-title">Know who I am</h2>
+            <p class="home-text reveal-up" style="--delay:0.3s">
+              I turn raw data into clear insights and impactful dashboards.
+              Explore my work where data meets design and decision-making.
+            </p>
+
+            <div class="home-actions reveal-up" style="--delay:0.4s">
+              <a href="cv.pdf" download class="btn-primary">
+                <ion-icon name="download-outline"></ion-icon>
+                Download CV
+              </a>
+              <a href="#projects" class="btn-secondary">View Projects</a>
+              <a href="#contact" class="btn-ghost">Contact Me</a>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: Dashboard Panel (no sparkline) -->
+          <div class="home-dashboard reveal-up" style="--delay:0.3s">
+            <div class="dashboard-header">
+              <span class="dashboard-title">Analytics Overview</span>
+              <span class="dashboard-live"><span class="live-dot"></span>Live</span>
+            </div>
+
+            <div class="kpi-row">
+              <div class="kpi-card">
+                <span class="kpi-num" data-count="2">0</span><span class="kpi-plus">+</span>
+                <span class="kpi-label">Projects</span>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-num" data-count="3">0</span><span class="kpi-plus">+</span>
+                <span class="kpi-label">Certifs</span>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-num" data-count="2">0</span><span class="kpi-plus">+</span>
+                <span class="kpi-label">Languages</span>
+              </div>
+            </div>
+
+            <div class="dash-skill-bars">
+              <div class="dash-skill">
+                <div class="dash-skill-top"><span>SQL</span><span class="dash-pct">88%</span></div>
+                <div class="dash-bar-track"><div class="dash-bar-fill" style="--w:88%; --color:#3b82f6"></div></div>
+              </div>
+              <div class="dash-skill">
+                <div class="dash-skill-top"><span>Excel</span><span class="dash-pct">92%</span></div>
+                <div class="dash-bar-track"><div class="dash-bar-fill" style="--w:92%; --color:#22c55e"></div></div>
+              </div>
+              <div class="dash-skill">
+                <div class="dash-skill-top"><span>Power BI</span><span class="dash-pct">80%</span></div>
+                <div class="dash-bar-track"><div class="dash-bar-fill" style="--w:80%; --color:#f59e0b"></div></div>
+              </div>
+              <div class="dash-skill">
+                <div class="dash-skill-top"><span>Python</span><span class="dash-pct">72%</span></div>
+                <div class="dash-bar-track"><div class="dash-bar-fill" style="--w:72%; --color:#a855f7"></div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- BOTTOM ROW -->
+        <div class="home-bottom-row reveal-up" style="--delay:0.5s">
+          <div class="tech-strip">
+            <span class="tech-strip-label">Stack</span>
+            <div class="tech-pills">
+              <span class="tech-pill"><img src="./images/sql.png" alt="SQL" width="14"> SQL</span>
+              <span class="tech-pill"><img src="./images/excel.png" alt="Excel" width="14"> Excel</span>
+              <span class="tech-pill"><img src="./images/powerbi.png" alt="Power BI" width="14"> Power BI</span>
+              <span class="tech-pill"><img src="./images/python.png" alt="Python" width="14"> Python</span>
+              <span class="tech-pill">🐼 Pandas</span>
+              <span class="tech-pill">🔢 NumPy</span>
+              
+            </div>
+          </div>
+
+          <div class="activity-cards">
+            <div class="activity-card">
+              <div class="ac-icon ac-green">🎓</div>
+              <div class="ac-text">
+                <span class="ac-title">Currently studying</span>
+                <span class="ac-sub">BI | IHEC Carthage</span>
+              </div>
+            </div>
+            <div class="activity-card">
+              <div class="ac-icon ac-blue">🔍</div>
+              <div class="ac-text">
+                <span class="ac-title">Open to</span>
+                <span class="ac-sub">Internship | Freelance</span>
+              </div>
+            </div>
+            <div class="activity-card">
+              <div class="ac-icon ac-purple">📍</div>
+              <div class="ac-text">
+                <span class="ac-title">Based in</span>
+                <span class="ac-sub">Manouba | Tunisia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ====== ABOUT ====== -->
+      <section id="about" class="section">
+
+        <header class="section-header reveal-up">
+          <span class="section-eyebrow">Who I am</span>
+          <h2 class="h2 article-title">About Me</h2>
         </header>
 
-        <section class="about-text">
-          <p>
-            Hi everyone! I am Iyed Mbarki, a Data Analyst and Business Intelligence Student based in IHEC Carthage, Tunisia. 
-            
-            
-          </p>
-          <p>
-            I enjoy working with datasets, building dashboards, and solving real-world problems using data. 
-            In fact,  my goal is to turn complex data into simple, 
-            understandable visuals and reports that help support better decision-making.
-           
-          <p>
-            Beyond Data, I play football, 
-            go running, and train at the gym regularly. 
-            I also like traveling to explore new places. 
-            In addition to that, I spend time coding from time to time, 
-            which helps me strengthen my problem-solving skills.
-            
-             
-            
-          </p>
-        </section>
-      
+        <div class="about-grid">
+          <section class="about-text reveal-left">
+            <p>Hi ! I'm <strong>Iyed Mbarki</strong>, a Data Analyst and Business Intelligence Student at IHEC Carthage, Tunisia.</p>
+            <p>I enjoy working with datasets, building dashboards, and solving real-world problems. My goal is to turn complex data into simple, understandable visuals and reports that support better decision-making.</p>
+            <p>Beyond data, I play football, go running, and train at the gym regularly. I also enjoy traveling and coding, which helps sharpen my problem-solving skills.</p>
+          </section>
 
+          <section class="service reveal-right">
+            <h3 class="h3 service-title">What I Do</h3>
+            <ul class="service-list">
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img src="./images/datacleaning.jpg" alt="data cleaning" width="40">
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Data Cleaning</h4>
+                  <p class="service-item-text">Removing errors, duplicates, and missing values to create reliable datasets.</p>
+                </div>
+              </li>
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img src="./images/database.jpg" alt="database" width="40">
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Database Querying</h4>
+                  <p class="service-item-text">Writing SQL queries to extract and manipulate data for reporting and analysis.</p>
+                </div>
+              </li>
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img src="./images/dash.jpg" alt="dashboard" width="40">
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Dashboard Creation</h4>
+                  <p class="service-item-text">Building interactive dashboards that visualize data clearly using charts, graphs, and KPIs.</p>
+                </div>
+              </li>
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img src="./images/analysis.jpg" alt="analysis" width="40">
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Data Analysis & Insights</h4>
+                  <p class="service-item-text">Identifying patterns, trends, and insights to support business performance and decision-making.</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div>
 
-        <!--
-          - service
-        -->
-
-        <section class="service">
-
-          <h3 class="h3 service-title">What I am Doing</h3>
-
-          <ul class="service-list">
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./images/datacleaning.jpg" alt="data cleaning icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Data cleaning</h4>
-
-                <p class="service-item-text">
-                  I Work on cleaning and organizing raw data by removing errors, duplicates, missing values etc. 
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./images/database.jpg" alt="data base icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Database Querying</h4>
-
-                <p class="service-item-text">
-                  I write SQL queries to extract and manipulate data from databases for reporting and analysis.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./images/dash.jpg" alt="dashboard icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Dashboard Creation</h4>
-
-                <p class="service-item-text">
-                  I build simple and interactive dashboards that visualize data clearly using charts, graphs, and KPIs.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./images/analysis.jpg" alt="data analysis icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Data Analysis & Insights</h4>
-
-                <p class="service-item-text">
-                  I analyze data to identify patterns, trends, and insights that help in decision-making and understanding business performance.
-                </p>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-
-        <!--
-          - Tools I Use
-        -->
-
-        <section class="testimonials">
-
+        <!-- Tools -->
+        <section class="tools-section reveal-up">
           <h3 class="h3 testimonials-title">Tools I Use</h3>
-
-          <ul class="testimonials-list has-scrollbar">
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./images/mysql.png" alt="SQL icon" width="40" data-testimonials-avatar>
+          <ul class="tools-list">
+            <li class="tool-item">
+              <div class="tool-card" data-tilt>
+                <div class="tool-card-glow"></div>
+                <figure class="tool-img-box">
+                  <img src="./images/sql.png" alt="SQL" width="44">
                 </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>SQL</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    For querying databases, extracting data, and performing analysis on structured datasets.
-                  </p>
-                </div>
-
+                <h4 class="tool-name">SQL</h4>
+                <p class="tool-desc">Querying, cleaning, extracting, and managing data in relational databases.</p>
               </div>
             </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./images/excel.png" alt="Excel icon" width="40" data-testimonials-avatar>
+            <li class="tool-item">
+              <div class="tool-card" data-tilt>
+                <div class="tool-card-glow"></div>
+                <figure class="tool-img-box">
+                  <img src="./images/excel.png" alt="Excel" width="44">
                 </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Excel</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    For data cleaning, organizing datasets, basic analysis, pivot tables, and quick visualizations.
-                  </p>
-                </div>
-
+                <h4 class="tool-name">Excel</h4>
+                <p class="tool-desc">Data cleaning, pivot tables, advanced formulas, and quick visualizations.</p>
               </div>
             </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./images/powerbi.png" alt="Power BI icon" width="60" data-testimonials-avatar>
+            <li class="tool-item">
+              <div class="tool-card" data-tilt>
+                <div class="tool-card-glow"></div>
+                <figure class="tool-img-box">
+                  <img src="./images/powerbi.png" alt="Power BI" width="44">
                 </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Power BI</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    For dashboards and data visualization using 
-                    charts, KPIs, and dynamic reports.
-                  </p>
-                </div>
-
+                <h4 class="tool-name">Power BI</h4>
+                <p class="tool-desc">Building interactive dashboards with charts, KPIs, and dynamic reports.</p>
               </div>
             </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./images/python.png" alt="Python icon" width="60" data-testimonials-avatar>
+            <li class="tool-item">
+              <div class="tool-card" data-tilt>
+                <div class="tool-card-glow"></div>
+                <figure class="tool-img-box">
+                  <img src="./images/python.png" alt="Python" width="44">
                 </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Python (Pandas/Numpy)</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    For data cleaning, transformation, 
-                    and advanced data analysis.
-                  </p>
-                </div>
-
+                <h4 class="tool-name">Python</h4>
+                <p class="tool-desc">Data cleaning, transformation, and advanced analysis with Pandas.</p>
               </div>
             </li>
-
           </ul>
-
         </section>
 
+      </section>
 
-        
+      <!-- ====== PROJECTS ====== -->
+      <section id="projects" class="section">
 
-
-
-      </article>
-      <!--
-        - #PROJECTS
-      -->
-
-      <article class="projects" data-page="projects">
-
-        
-
-        <header>
+        <header class="section-header reveal-up">
+          <span class="section-eyebrow">My Work</span>
           <h2 class="h2 article-title">Projects</h2>
         </header>
 
-        <section class="projects">
-
-          <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Excel Projects</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>SQL Projects</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>End-to-End Projects</button>
-            </li>
-
-          </ul>
-
-          <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-
-            </button>
-
-            <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Excel Projects</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>SQL Projects</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>End-to-End Projects</button>
-              </li>
-
-            </ul>
-
-          </div>
-
-          <ul class="project-list">
-
-            <li class="project-item  active" data-filter-item data-category="Excel Projects">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Finance</h3>
-
-                <p class="project-category">Excel Projects</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="Excel Projects">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Orizon</h3>
-
-                <p class="project-category">End-to-End Projects</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="Excel Projects">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Fundo</h3>
-
-                <p class="project-category">Excel Projects</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Brawlhalla</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
-                </figure>
-
-                <h3 class="project-title">DSM.</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">MetaSpark</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Summary</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Task Manager</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Arrival</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-      <!--
-        - #Skills
-      -->
-
-      <article class="skills" data-page="skills">
-
-        <header>
-          <h2 class="h2 article-title">Skills</h2>
-        </header>
-
-        <section id="skills">
-          <div class="eyebrow">Technical skills</div>
-          <h2 class="sec-title">Tools &amp; <em>technologies</em></h2>
-          <div class="skills-grid reveal">
-          <div class="skill-cat"><div class="sc-head"><div class="sc-ico">&#128013;</div><div class="sc-name">Data Analytics</div></div><div class="stags"><span class="stag hi">Python</span><span class="stag hi">Pandas</span><span class="stag">NumPy</span><span class="stag">Statistical Analysis</span><span class="stag">Data Cleaning</span><span class="stag">EDA</span></div></div>
-          <div class="skill-cat"><div class="sc-head"><div class="sc-ico">&#128202;</div><div class="sc-name">Visualization &amp; BI</div></div><div class="stags"><span class="stag hi">Power BI</span><span class="stag hi">Advanced Excel</span><span class="stag">Power Query</span><span class="stag">Dashboards</span><span class="stag">KPIs</span><span class="stag">Data Storytelling</span><span class="stag">Reporting</span></div></div>
-          <div class="skill-cat"><div class="sc-head"><div class="sc-ico">&#128451;</div><div class="sc-name">Databases &amp; SQL</div></div><div class="stags"><span class="stag hi">SQL</span><span class="stag">MySQL</span><span class="stag">Complex Queries</span><span class="stag">Window Functions</span><span class="stag">Data Extraction</span><span class="stag">Query Optimization</span></div></div>
-          <div class="skill-cat"><div class="sc-head"><div class="sc-ico">&#128200;</div><div class="sc-name">Business Analytics</div></div><div class="stags"><span class="stag">Data Analysis</span><span class="stag">Business Analysis</span><span class="stag">Product Analysis</span><span class="stag">Funnel Analysis</span><span class="stag">Trend Analysis</span><span class="stag">Marketing KPIs</span></div></div>
-          <div class="skill-cat"><div class="sc-head"><div class="sc-ico">&#128295;</div><div class="sc-name">Other Tools &amp; Dev</div></div><div class="stags"><span class="stag hi">Python</span><span class="stag">Jupyter Notebook</span><span class="stag">C/C++</span></div></div>
-          <div class="skill-cat"><div class="sc-head"><div class="sc-ico">&#129309;</div><div class="sc-name">Soft Skills</div></div><div class="stags"><span class="stag hi">Data Storytelling</span><span class="stag">Attention to Details</span><span class="stag">Problem Solving</span><span class="stag">Communication</span><span class="stag">Critical Thinking</span><span class="stag">Time Management</span><span class="stag">Analytical Thinking</span></div></div>
+        <div class="filter-list reveal-up">
+          <button class="filter-btn active" data-filter-btn>All</button>
+          
+          <button class="filter-btn" data-filter-btn>SQL Projects</button>
+          <button class="filter-btn" data-filter-btn>Data Cleaning &amp; ETL Projects</button>
+          <button class="filter-btn" data-filter-btn>Data Visualization Projects </button>
+          <button class="filter-btn" data-filter-btn>End-to-End Projects</button>
+          <button class="filter-btn" data-filter-btn>Automation Projects</button>
+          
         </div>
-        </section>
 
-      </article>
-
-
-
-
-
-      <!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Institute of Higher Commercial Studies of Carthage</h4>
-
-              <span>2025 — Present</span>
-
-              <p class="timeline-text">
-                BI student at IHEC Carthage developing skills in data analysis, Statistics, SQL, Power BI 
-                and reporting tools to extract insights and support business decision-making.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Xiamen University Malaysia</h4>
-
-              <span>2024 — 2025</span>
-
-              <p class="timeline-text">
-                Software Engineering student at Xiamen University Malaysia for two semesters,
-                with a foundation in programming, algorithms, and software development fundamentals.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Mornaguia High School</h4>
-
-              <span>2023 — 2024</span>
-
-              <p class="timeline-text">
-                Mathematics student at the time of my Baccalaureate, 
-                where I successfully completed the Math track and built a strong foundation in analytical thinking,
-                problem-solving, and advanced mathematics.
-              </p>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Projects</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Creative director</h4>
-
-              <span>2015 — Present</span>
-
-              <p class="timeline-text">
-                Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas
-                molestias
-                exceptur.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Art director</h4>
-
-              <span>2013 — 2015</span>
-
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Web designer</h4>
-
-              <span>2010 — 2013</span>
-
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
-              </p>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="skill">
-
-          <h3 class="h3 skills-title">Skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">MySQL</h5>
-                <data value="85">85%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 85%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Excel</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Power BI</h5>
-                <data value="60">60%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 60%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Python</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
-            </li>
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Data Cleaning</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Data Analysis</h5>
-                <data value="95">95%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 95%;"></div>
-              </div>
-
-            </li>
+        <div class="filter-select-box">
+          <button class="filter-select" data-select>
+            <div class="select-value" data-selecct-value>Select category</div>
+            <div class="select-icon"><ion-icon name="chevron-down"></ion-icon></div>
+          </button>
+          <ul class="select-list">
+            <li class="select-item"><button data-select-item>All</button></li>
+            <li class="select-item"><button data-select-item>SQL Projects</button></li>
+            <li class="select-item"><button data-select-item>Data Cleaning &amp; ETL Projects</button></li>
+            <li class="select-item"><button data-select-item>Data Visualization Projects</button></li>
+            <li class="select-item"><button data-select-item>End-to-End Projects</button></li>
+            <li class="select-item"><button data-select-item>Automation Projects</button></li>
 
           </ul>
+        </div>
 
-        </section>
+        <!--
+        <ul class="project-list">
+          <li class="project-item active" data-filter-item data-category="sql projects">
+            <a href="YOUR_GITHUB_LINK" target="_blank" class="project-link">
+              <figure class="project-img">
+                <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                <img src="./assets/images/project-1.jpg" alt="Sales Analysis" loading="lazy">
+                <div class="project-overlay"><span class="project-tag">SQL Projects</span></div>
+              </figure>
+              <div class="project-meta">
+                <h3 class="project-title">Sales Analysis</h3>
+                <p class="project-description">Complex SQL queries to analyze sales trends, revenue growth, and customer behavior.</p>
+                <span class="view-project">View Project <ion-icon name="arrow-forward-outline"></ion-icon></span>
+              </div>
+            </a>
+          </li>
 
-      </article>
+          <li class="project-item active" data-filter-item data-category="data visualization projects">
+            <a href="YOUR_GITHUB_LINK" target="_blank" class="project-link">
+              <figure class="project-img">
+                <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                <img src="./assets/images/project-1.jpg" alt="Finance Dashboard" loading="lazy">
+                <div class="project-overlay"><span class="project-tag">Data Visualization Projects</span></div>
+              </figure>
+              <div class="project-meta">
+                <h3 class="project-title">Finance Dashboard</h3>
+                <p class="project-description">Excel dashboard analyzing financial KPIs with pivot tables and dynamic charts.</p>
+                <span class="view-project">View Project <ion-icon name="arrow-forward-outline"></ion-icon></span>
+              </div>
+            </a>
+          </li>
 
+          <li class="project-item active" data-filter-item data-category="sql projects">
+            <a href="YOUR_GITHUB_LINK" target="_blank" class="project-link">
+              <figure class="project-img">
+                <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                <img src="./assets/images/project-1.jpg" alt="Sales Analysis" loading="lazy">
+                <div class="project-overlay"><span class="project-tag">SQL Projects</span></div>
+              </figure>
+              <div class="project-meta">
+                <h3 class="project-title">Sales Analysis</h3>
+                <p class="project-description">Complex SQL queries to analyze sales trends, revenue growth, and customer behavior.</p>
+                <span class="view-project">View Project <ion-icon name="arrow-forward-outline"></ion-icon></span>
+              </div>
+            </a>
+          </li>
+          -->
 
+          <li class="project-item active" data-filter-item data-category="data cleaning & etl projects">
+            <a href="projects/etl-projects/etl1/project-superstore.html" class="project-link">
+              <figure class="project-img">
+                <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                <img src="images/superstore-project.jpg" alt="Superstore ETL" loading="lazy">
+                <div class="project-overlay"><span class="project-tag">Data Cleaning &amp; ETL Projects</span></div>
+              </figure>
+              <div class="project-meta">
+                <h3 class="project-title">Superstore ETL Pipeline</h3>
+                <p class="project-description">End-to-end ETL project: data cleaning in Python, transformation, and loading into PostgreSQL for analysis.</p>
+                <span class="view-project">View Project <ion-icon name="arrow-forward-outline"></ion-icon></span>
+              </div>
+            </a>
+          </li>
 
+          <!--
+          <li class="project-item active" data-filter-item data-category="data visualization projects">
+            <a href="YOUR_GITHUB_LINK" target="_blank" class="project-link">
+              <figure class="project-img">
+                <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                <img src="./assets/images/project-1.jpg" alt="HR Analytics" loading="lazy">
+                <div class="project-overlay"><span class="project-tag">Data Visualization Projects</span></div>
+              </figure>
+              <div class="project-meta">
+                <h3 class="project-title">HR Analytics</h3>
+                <p class="project-description">Employee performance tracker built in Excel with conditional formatting and slicers.</p>
+                <span class="view-project">View Project <ion-icon name="arrow-forward-outline"></ion-icon></span>
+              </div>
+            </a>
+          </li>
 
+          <li class="project-item active" data-filter-item data-category="data cleaning & etl projects">
+            <a href="YOUR_GITHUB_LINK" target="_blank" class="project-link">
+              <figure class="project-img">
+                <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                <img src="./assets/images/project-1.jpg" alt="Market Analysis" loading="lazy">
+                <div class="project-overlay"><span class="project-tag">Data Cleaning & ETL Projects</span></div>
+              </figure>
+              <div class="project-meta">
+                <h3 class="project-title">Market Analysis</h3>
+                <p class="project-description">Full market trend analysis using Python (Pandas), SQL joins, and Power BI visuals.</p>
+                <span class="view-project">View Project <ion-icon name="arrow-forward-outline"></ion-icon></span>
+              </div>
+            </a>
+          </li>
 
-      <!--
-        - #CONTACT
+          <li class="project-item active" data-filter-item data-category="end-to-end projects">
+            <a href="YOUR_GITHUB_LINK" target="_blank" class="project-link">
+              <figure class="project-img">
+                <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                <img src="./assets/images/project-1.jpg" alt="Market Analysis" loading="lazy">
+                <div class="project-overlay"><span class="project-tag">End-to-End Projects</span></div>
+              </figure>
+              <div class="project-meta">
+                <h3 class="project-title">Market Analysis</h3>
+                <p class="project-description">Full market trend analysis using Python (Pandas), SQL joins, and Power BI visuals.</p>
+                <span class="view-project">View Project <ion-icon name="arrow-forward-outline"></ion-icon></span>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="end-to-end projects">
+            <a href="YOUR_GITHUB_LINK" target="_blank" class="project-link">
+              <figure class="project-img">
+                <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                <img src="./assets/images/project-1.jpg" alt="Market Analysis" loading="lazy">
+                <div class="project-overlay"><span class="project-tag">End-to-End Projects</span></div>
+              </figure>
+              <div class="project-meta">
+                <h3 class="project-title">Market Analysis</h3>
+                <p class="project-description">Full market trend analysis using Python (Pandas), SQL joins, and Power BI visuals.</p>
+                <span class="view-project">View Project <ion-icon name="arrow-forward-outline"></ion-icon></span>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="automation projects">
+            <a href="YOUR_GITHUB_LINK" target="_blank" class="project-link">
+              <figure class="project-img">
+                <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                <img src="./assets/images/project-1.jpg" alt="Market Analysis" loading="lazy">
+                <div class="project-overlay"><span class="project-tag">Automation Projects</span></div>
+              </figure>
+              <div class="project-meta">
+                <h3 class="project-title">Market Analysis</h3>
+                <p class="project-description">Full market trend analysis using Python (Pandas), SQL joins, and Power BI visuals.</p>
+                <span class="view-project">View Project <ion-icon name="arrow-forward-outline"></ion-icon></span>
+              </div>
+            </a>
+          </li>
+          <li class="project-item active" data-filter-item data-category="automation projects">
+            <a href="YOUR_GITHUB_LINK" target="_blank" class="project-link">
+              <figure class="project-img">
+                <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                <img src="./assets/images/project-1.jpg" alt="Market Analysis" loading="lazy">
+                <div class="project-overlay"><span class="project-tag">Automation Projects</span></div>
+              </figure>
+              <div class="project-meta">
+                <h3 class="project-title">Market Analysis</h3>
+                <p class="project-description">Full market trend analysis using Python (Pandas), SQL joins, and Power BI visuals.</p>
+                <span class="view-project">View Project <ion-icon name="arrow-forward-outline"></ion-icon></span>
+              </div>
+            </a>
+          </li>
+
+        </ul>
       -->
 
-      <article class="contact" data-page="contact">
+      </section>
 
-        <header>
+      <!-- ====== SKILLS ====== -->
+      <section id="skills" class="section">
+
+        <header class="section-header reveal-up">
+          <span class="section-eyebrow">Technical skills</span>
+          <h2 class="h2 article-title">Tools &amp; <em>Technologies</em></h2>
+        </header>
+
+        <div class="skills-grid reveal-up">
+
+          <div class="skill-cat">
+            <div class="sc-head"><div class="sc-ico">🐍</div><div class="sc-name">Data Analytics</div></div>
+            <div class="stags">
+              <span class="stag hi">Excel (Advanced)</span>
+              <span class="stag hi">Python</span>
+              <span class="stag">Pandas</span>
+              <span class="stag">NumPy</span>
+              <span class="stag">Data Cleaning</span>
+              <span class="stag">ETL</span>
+            </div>
+          </div>
+
+          <div class="skill-cat">
+            <div class="sc-head"><div class="sc-ico">📊</div><div class="sc-name">Visualization & BI</div></div>
+            <div class="stags">
+              <span class="stag hi">Power BI</span>
+              <span class="stag hi">Excel Dashboards</span>
+              <span class="stag">Interactive Charts</span>
+              <span class="stag">KPIs</span>
+              <span class="stag">Data Storytelling</span>
+            </div>
+          </div>
+
+          <div class="skill-cat">
+            <div class="sc-head"><div class="sc-ico">🗄️</div><div class="sc-name">Databases & SQL</div></div>
+            <div class="stags">
+              <span class="stag hi">SQL Fundamentals</span>
+              <span class="stag hi">PostgreSQL</span>
+              <span class="stag">Complex Queries</span>
+              <span class="stag">Window Functions</span>
+              <span class="stag">Data Extraction</span>
+            </div>
+          </div>
+
+          <div class="skill-cat">
+            <div class="sc-head"><div class="sc-ico">📈</div><div class="sc-name">Business Analytics</div></div>
+            <div class="stags">
+              <span class="stag hi">Marketing KPIs</span>
+              <span class="stag hi">Analytical Thinking</span>
+              <span class="stag">Recommendations</span>
+              <span class="stag">Business Concepts</span>
+            </div>
+          </div>
+
+          <div class="skill-cat">
+            <div class="sc-head"><div class="sc-ico">🔧</div><div class="sc-name">Other Tools & Dev</div></div>
+            <div class="stags">
+              <span class="stag hi">GitHub</span>
+              <span class="stag hi">C#</span>
+              <span class="stag">Statistics</span>
+              <span class="stag">C/C++</span>
+            </div>
+          </div>
+
+          <div class="skill-cat">
+            <div class="sc-head"><div class="sc-ico">🤝</div><div class="sc-name">Soft Skills</div></div>
+            <div class="stags">
+              <span class="stag hi">Problem Solving</span>
+              <span class="stag hi">Storytelling</span>
+              <span class="stag">Attention to Detail</span>
+              <span class="stag">Communication</span>
+              <span class="stag">Time Management</span>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ====== CONTACT ====== -->
+      <section id="contact" class="section">
+
+        <header class="section-header reveal-up">
+          <span class="section-eyebrow">Get in touch</span>
           <h2 class="h2 article-title">Contact</h2>
         </header>
 
-        
-        <section class="contact-form">
+        <div class="contact-grid">
 
-          <h3 class="h3 form-title">Contact Form</h3>
+          <section class="contact-form reveal-left">
+            <h3 class="h3 form-title">Send a Message</h3>
+            <form action="https://formspree.io/f/your-id" method="POST" class="form" data-form>
+              <div class="input-wrapper">
+                <div class="input-group">
+                  <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+                  <label class="input-label"></label>
+                </div>
+                <div class="input-group">
+                  <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+                  <label class="input-label"></label>
+                </div>
+              </div>
+              <div class="input-group">
+                <input type="text" name="subject" class="form-input" placeholder="Subject" required data-form-input>
+                <label class="input-label"></label>
+              </div>
+              <div class="input-group">
+                <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+                <label class="input-label"></label>
+              </div>
+              <div class="form-status" data-form-status></div>
+              <button class="form-btn" type="submit" disabled data-form-btn>
+                <ion-icon name="paper-plane"></ion-icon>
+                <span>Send Message</span>
+                <div class="btn-shine"></div>
+              </button>
+            </form>
+          </section>
 
-          <form action="#" class="form" data-form>
+          <div class="contact-extra reveal-right">
+            <h3 class="h3">Other ways to reach me</h3>
+            <a href="mailto:mbarkiiyeed@gmail.com" class="contact-card">
+              <div class="cc-icon">📧</div>
+              <div class="cc-text"><span class="cc-label">Email</span><span class="cc-value">mbarkiiyeed@gmail.com</span></div>
+              <ion-icon name="arrow-forward-outline" class="cc-arrow"></ion-icon>
+            </a>
+            <a href="https://wa.me/21628544846" target="_blank" class="contact-card">
+              <div class="cc-icon">💬</div>
+              <div class="cc-text"><span class="cc-label">WhatsApp</span><span class="cc-value">+216 28 544 846</span></div>
+              <ion-icon name="arrow-forward-outline" class="cc-arrow"></ion-icon>
+            </a>
+            <a href="https://www.linkedin.com/in/iyedmbarki" target="_blank" class="contact-card">
+              <div class="cc-icon">🔗</div>
+              <div class="cc-text"><span class="cc-label">LinkedIn</span><span class="cc-value">iyedmbarki</span></div>
+              <ion-icon name="arrow-forward-outline" class="cc-arrow"></ion-icon>
+            </a>
+            <a href="https://github.com/Iyedos" target="_blank" class="contact-card">
+              <div class="cc-icon">💻</div>
+              <div class="cc-text"><span class="cc-label">GitHub</span><span class="cc-value">Iyedos</span></div>
+              <ion-icon name="arrow-forward-outline" class="cc-arrow"></ion-icon>
+            </a>
+          </div>
 
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+        </div>
 
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-            </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
-
-          </form>
-
-        </section>
-
-      </article>
+      </section>
 
     </div>
-
-
-
-    <!-- Modal overlay -->
-<div class="overlay" data-overlay></div>
-
-<!-- Testimonials modal -->
-<div class="modal-container" data-modal-container>
-  <div class="testimonials-modal">
-    <button class="modal-close-btn" data-modal-close-btn>
-      <ion-icon name="close-outline"></ion-icon>
-    </button>
-    <div class="modal-img-wrapper">
-      <figure class="modal-avatar-box">
-        <img src="" alt="" width="80" data-modal-img>
-      </figure>
-      <img src="./assets/images/icon-quote.svg" alt="quote icon">
-    </div>
-    <div class="modal-content">
-      <h4 class="h4 modal-title" data-modal-title></h4>
-      <div data-modal-text></div>
-    </div>
-  </div>
-</div>
-
   </main>
 
+  <!-- Modal -->
+  <div class="overlay" data-overlay></div>
+  <div class="modal-container" data-modal-container>
+    <div class="testimonials-modal">
+      <button class="modal-close-btn" data-modal-close-btn>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+      <div class="modal-content">
+        <h4 class="h4 modal-title" data-modal-title></h4>
+        <div data-modal-text></div>
+      </div>
+    </div>
+  </div>
 
-
-
-
-
-  <!--
-    - custom js link
-  -->
   <script src="script.js"></script>
-
-  <!--
-    - ionicon link
-  -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
-
 </html>

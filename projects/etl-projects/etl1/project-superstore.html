@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Superstore ETL Pipeline — Iyed Mbarki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="design.css">
+</head>
+<body>
+
+  <canvas id="bg-canvas"></canvas>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- Back Button -->
+  <a href="/index.html#projects" class="back-btn" id="backBtn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    <span>Back to Portfolio</span>
+  </a>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-inner">
+
+        <div class="hero-tags reveal-up">
+          <span class="tag tag-etl">ETL Pipeline</span>
+          <span class="tag tag-sql">SQL</span>
+          <span class="tag tag-python">Python</span>
+          <span class="tag tag-end">End-to-End</span>
+        </div>
+
+        <h1 class="hero-title reveal-up" style="--delay:.08s">
+          <span class="title-word">Superstore</span>
+          <span class="title-word accent">ETL Pipeline</span>
+        </h1>
+
+        <p class="hero-subtitle reveal-up" style="--delay:.16s">
+          A full end-to-end data pipeline — from raw CSV extraction to a clean PostgreSQL database — with Python ETL scripts and advanced SQL analytics.
+        </p>
+
+        <div class="hero-meta reveal-up" style="--delay:.22s">
+          <div class="meta-item">
+            <span class="meta-label">Stack</span>
+            <span class="meta-value">Python · PostgreSQL · Pandas · SQLAlchemy</span>
+          </div>
+          <div class="meta-divider"></div>
+          <div class="meta-item">
+            <span class="meta-label">Type</span>
+            <span class="meta-value">End-to-End Data Project</span>
+          </div>
+          <div class="meta-divider"></div>
+          <div class="meta-item">
+            <span class="meta-label">Dataset</span>
+            <span class="meta-value">Global Superstore Sales</span>
+          </div>
+        </div>
+
+        <div class="hero-actions reveal-up" style="--delay:.3s">
+          <a href="https://github.com/Iyedos/datacleaning-ETL-projects/tree/main/superstore-project" target="_blank" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+          <a href="#pipeline" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            Explore Project
+          </a>
+        </div>
+
+      </div>
+
+      <!-- KPI Strip -->
+      <div class="kpi-strip reveal-up" style="--delay:.38s">
+        <div class="kpi-box">
+          <span class="kpi-num" data-count="51290">0</span>
+          <span class="kpi-label">Records Loaded</span>
+        </div>
+        <div class="kpi-box">
+          <span class="kpi-num" data-count="24">0</span>
+          <span class="kpi-label">Columns Mapped</span>
+        </div>
+        <div class="kpi-box">
+          <span class="kpi-num" data-count="3">0</span>
+          <span class="kpi-label">Python Scripts</span>
+        </div>
+        <div class="kpi-box">
+          <span class="kpi-num" data-count="5">0</span>
+          <span class="kpi-label">SQL Queries</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===== PIPELINE FLOW ===== -->
+    <section class="pipeline-section" id="pipeline">
+      <div class="section-header reveal-up">
+        <span class="eyebrow">Architecture</span>
+        <h2 class="h2">ETL Pipeline Flow</h2>
+      </div>
+
+      <div class="pipeline-flow reveal-up" style="--delay:.1s">
+
+        <div class="flow-step" data-step="1">
+          <div class="step-icon step-extract">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
+          </div>
+          <div class="step-content">
+            <h3 class="step-title">Extract</h3>
+            <p class="step-desc">Read raw CSV using Pandas with latin-1 encoding. Log shape, data types and preview rows.</p>
+            <div class="step-tag">extract.py</div>
+          </div>
+        </div>
+
+        <div class="flow-arrow">
+          <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8 L32 8 M28 3 L36 8 L28 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </div>
+
+        <div class="flow-step" data-step="2">
+          <div class="step-icon step-transform">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="step-content">
+            <h3 class="step-title">Transform</h3>
+            <p class="step-desc">Remove duplicates &amp; nulls, rename 24 columns to snake_case, cast date columns to datetime.</p>
+            <div class="step-tag">transform.py</div>
+          </div>
+        </div>
+
+        <div class="flow-arrow">
+          <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8 L32 8 M28 3 L36 8 L28 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </div>
+
+        <div class="flow-step" data-step="3">
+          <div class="step-icon step-load">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div class="step-content">
+            <h3 class="step-title">Load</h3>
+            <p class="step-desc">Push clean DataFrame into PostgreSQL via SQLAlchemy engine. Credentials stored in .env file.</p>
+            <div class="step-tag">load.py</div>
+          </div>
+        </div>
+
+        <div class="flow-arrow">
+          <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8 L32 8 M28 3 L36 8 L28 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </div>
+
+        <div class="flow-step" data-step="4">
+          <div class="step-icon step-analyse">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="step-content">
+            <h3 class="step-title">Analyse</h3>
+            <p class="step-desc">SQL queries surface KPIs, top products, monthly trends, customer rankings and regional revenue.</p>
+            <div class="step-tag">data_analysis.sql</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== CODE BLOCKS ===== -->
+    <section class="code-section">
+      <div class="section-header reveal-up">
+        <span class="eyebrow">Code Deep Dive</span>
+        <h2 class="h2">Scripts &amp; Queries</h2>
+      </div>
+
+      <!-- Tabs -->
+      <div class="code-tabs reveal-up" style="--delay:.08s">
+        <button class="tab-btn active" data-tab="extract">extract.py</button>
+        <button class="tab-btn" data-tab="transform">transform.py</button>
+        <button class="tab-btn" data-tab="load">load.py</button>
+        <button class="tab-btn" data-tab="sql-create">table_creation.sql</button>
+        <button class="tab-btn" data-tab="sql-analysis">data_analysis.sql</button>
+      </div>
+
+      <div class="code-panels">
+
+        <div class="code-panel active" id="tab-extract">
+          <div class="code-header">
+            <span class="code-filename">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+              scripts/extract.py
+            </span>
+            <button class="copy-btn" data-target="code-extract">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <pre class="code-block" id="code-extract"><code><span class="c">import</span> pandas <span class="c">as</span> pd
+<span class="c">import</span> os
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+data_path = os.path.join(BASE_DIR, <span class="s">"data"</span>, <span class="s">"raw_data.csv"</span>)
+
+<span class="kw">def</span> <span class="fn">extract_data</span>(path=data_path):
+    df = pd.read_csv(path, encoding=<span class="s">"latin-1"</span>)
+    
+    print(<span class="s">"Shape:"</span>, df.shape)
+    print(df.info())
+    print(df.head())
+    
+    <span class="kw">return</span> df
+
+
+<span class="kw">if</span> __name__ == <span class="s">"__main__"</span>:
+    df = <span class="fn">extract_data</span>()</code></pre>
+        </div>
+
+        <div class="code-panel" id="tab-transform">
+          <div class="code-header">
+            <span class="code-filename">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+              scripts/transform.py
+            </span>
+            <button class="copy-btn" data-target="code-transform">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <pre class="code-block" id="code-transform"><code><span class="c">import</span> pandas <span class="c">as</span> pd
+
+<span class="kw">def</span> <span class="fn">clean_data</span>(df):
+
+    <span class="cm"># remove duplicates and nulls</span>
+    df = df.drop_duplicates()
+    df = df.dropna()
+
+    <span class="cm"># rename columns to match DB schema</span>
+    df = df.rename(columns={
+        <span class="s">"Row ID"</span>:          <span class="s">"row_id"</span>,
+        <span class="s">"Order ID"</span>:        <span class="s">"order_id"</span>,
+        <span class="s">"Order Date"</span>:      <span class="s">"order_date"</span>,
+        <span class="s">"Ship Date"</span>:       <span class="s">"ship_date"</span>,
+        <span class="s">"Ship Mode"</span>:       <span class="s">"ship_mode"</span>,
+        <span class="s">"Customer ID"</span>:     <span class="s">"customer_id"</span>,
+        <span class="s">"Customer Name"</span>:   <span class="s">"customer_full_name"</span>,
+        <span class="s">"Segment"</span>:         <span class="s">"segment"</span>,
+        <span class="s">"Country"</span>:         <span class="s">"country"</span>,
+        <span class="s">"City"</span>:            <span class="s">"city"</span>,
+        <span class="s">"State"</span>:           <span class="s">"state_name"</span>,
+        <span class="s">"Postal Code"</span>:     <span class="s">"postal_code"</span>,
+        <span class="s">"Region"</span>:          <span class="s">"region"</span>,
+        <span class="s">"Product ID"</span>:      <span class="s">"product_id"</span>,
+        <span class="s">"Category"</span>:        <span class="s">"category"</span>,
+        <span class="s">"Sub-Category"</span>:    <span class="s">"sub_category"</span>,
+        <span class="s">"Product Name"</span>:    <span class="s">"product_name"</span>,
+        <span class="s">"Sales"</span>:           <span class="s">"sales"</span>,
+        <span class="s">"Quantity"</span>:        <span class="s">"quantity"</span>,
+        <span class="s">"Discount"</span>:        <span class="s">"discount"</span>,
+        <span class="s">"Profit"</span>:          <span class="s">"profit"</span>,
+        <span class="s">"Shipping Cost"</span>:   <span class="s">"shipping_cost"</span>,
+        <span class="s">"Order Priority"</span>:  <span class="s">"order_priority"</span>,
+        <span class="s">"Market"</span>:          <span class="s">"market"</span>
+    })
+
+    <span class="cm"># convert data types</span>
+    df[<span class="s">'ship_date'</span>]  = pd.to_datetime(df[<span class="s">'ship_date'</span>],  errors=<span class="s">'coerce'</span>, dayfirst=<span class="kw">True</span>)
+    df[<span class="s">'order_date'</span>] = pd.to_datetime(df[<span class="s">'order_date'</span>], errors=<span class="s">'coerce'</span>, dayfirst=<span class="kw">True</span>)
+
+    <span class="kw">return</span> df</code></pre>
+        </div>
+
+        <div class="code-panel" id="tab-load">
+          <div class="code-header">
+            <span class="code-filename">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+              scripts/load.py
+            </span>
+            <button class="copy-btn" data-target="code-load">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <pre class="code-block" id="code-load"><code><span class="c">from</span> sqlalchemy <span class="c">import</span> create_engine
+<span class="c">import</span> os
+<span class="c">from</span> dotenv <span class="c">import</span> load_dotenv
+
+load_dotenv()
+engine = create_engine(os.getenv(<span class="s">"DB_URL"</span>))
+
+<span class="kw">def</span> <span class="fn">load_data</span>(df, table_name=<span class="s">"sales"</span>):
+    df.to_sql(table_name, engine, if_exists=<span class="s">"append"</span>, index=<span class="kw">False</span>)
+    print(<span class="kw">f</span><span class="s">"Data loaded successfully into {table_name}"</span>)
+
+
+<span class="kw">if</span> __name__ == <span class="s">"__main__"</span>:
+    <span class="c">from</span> extract <span class="c">import</span> extract_data
+    <span class="c">from</span> transform <span class="c">import</span> clean_data
+
+    df = <span class="fn">extract_data</span>()
+    df = <span class="fn">clean_data</span>(df)
+    <span class="fn">load_data</span>(df)</code></pre>
+        </div>
+
+        <div class="code-panel" id="tab-sql-create">
+          <div class="code-header">
+            <span class="code-filename">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              sql/table_creation.sql
+            </span>
+            <button class="copy-btn" data-target="code-sql-create">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <pre class="code-block" id="code-sql-create"><code><span class="kw">CREATE TABLE</span> sales (
+    row_id              <span class="t">int</span>,
+    order_id            <span class="t">text</span>,
+    order_date          <span class="t">date</span>,
+    ship_date           <span class="t">date</span>,
+    ship_mode           <span class="t">text</span>,
+    customer_id         <span class="t">text</span>,
+    customer_full_name  <span class="t">text</span>,
+    segment             <span class="t">text</span>,
+    city                <span class="t">text</span>,
+    state_name          <span class="t">text</span>,
+    country             <span class="t">text</span>,
+    postal_code         <span class="t">int</span>,
+    market              <span class="t">text</span>,
+    region              <span class="t">text</span>,
+    product_id          <span class="t">text</span>,
+    category            <span class="t">text</span>,
+    sub_category        <span class="t">text</span>,
+    product_name        <span class="t">text</span>,
+    sales               <span class="t">numeric</span>,
+    quantity            <span class="t">int</span>,
+    discount            <span class="t">numeric</span>,
+    profit              <span class="t">numeric</span>,
+    shipping_cost       <span class="t">numeric</span>,
+    order_priority      <span class="t">text</span>
+);
+
+<span class="cm">-- Verify columns and types</span>
+<span class="kw">SELECT</span> column_name  <span class="s">"Columns"</span>,
+       data_type    <span class="s">"Types"</span>
+<span class="kw">FROM</span>   information_schema.columns
+<span class="kw">WHERE</span>  table_name = <span class="s">'sales'</span>;</code></pre>
+        </div>
+
+        <div class="code-panel" id="tab-sql-analysis">
+          <div class="code-header">
+            <span class="code-filename">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              sql/data_analysis.sql
+            </span>
+            <button class="copy-btn" data-target="code-sql-analysis">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <pre class="code-block" id="code-sql-analysis"><code><span class="cm">-- KPIs: total orders, revenue, profit</span>
+<span class="kw">SELECT</span>
+    <span class="fn">COUNT</span>(*) <span class="kw">AS</span> total_orders,
+    <span class="fn">ROUND</span>(<span class="fn">SUM</span>(sales),  <span class="n">2</span>) <span class="kw">AS</span> total_revenue,
+    <span class="fn">ROUND</span>(<span class="fn">SUM</span>(profit), <span class="n">2</span>) <span class="kw">AS</span> total_profit,
+    <span class="fn">ROUND</span>(<span class="fn">AVG</span>(profit), <span class="n">2</span>) <span class="kw">AS</span> avg_profit_per_order
+<span class="kw">FROM</span> sales;
+
+
+
+<span class="cm">-- Best 3 Selling Products</span>
+<span class="kw">SELECT</span> product_name,
+       <span class="fn">ROUND</span>(<span class="fn">SUM</span>(sales), <span class="n">2</span>) <span class="kw">AS</span> total_sales
+<span class="kw">FROM</span>   sales
+<span class="kw">GROUP  BY</span> product_name
+<span class="kw">ORDER  BY</span> <span class="n">2</span> <span class="kw">DESC</span>
+<span class="kw">LIMIT</span>  <span class="n">3</span>;
+
+
+
+<span class="cm">-- Monthly Sales Trend</span>
+<span class="kw">SELECT</span> to_char(order_date, <span class="s">'Month'</span>) <span class="kw">AS</span> month,
+       <span class="fn">ROUND</span>(<span class="fn">SUM</span>(sales), <span class="n">2</span>)          <span class="kw">AS</span> total_sales
+<span class="kw">FROM</span>   sales
+<span class="kw">GROUP  BY</span> <span class="n">1</span>, date_part(<span class="s">'month'</span>, order_date)
+<span class="kw">ORDER  BY</span> date_part(<span class="s">'month'</span>, order_date);
+
+
+
+<span class="cm">-- Top 5 Customers by Sales</span>
+<span class="kw">SELECT</span> customer_full_name,
+       <span class="fn">ROUND</span>(<span class="fn">SUM</span>(sales), <span class="n">2</span>) <span class="kw">AS</span> total_sales
+<span class="kw">FROM</span>   sales
+<span class="kw">GROUP  BY</span> customer_full_name
+<span class="kw">ORDER  BY</span> total_sales <span class="kw">DESC</span>
+<span class="kw">LIMIT</span>  <span class="n">5</span>;
+
+
+
+<span class="cm">-- Sales by Region</span>
+<span class="kw">SELECT</span> region,
+       <span class="fn">ROUND</span>(<span class="fn">SUM</span>(sales), <span class="n">2</span>) <span class="kw">AS</span> total_revenue
+<span class="kw">FROM</span>   sales
+<span class="kw">GROUP  BY</span> region
+<span class="kw">ORDER  BY</span> <span class="n">2</span> <span class="kw">DESC</span>;</code></pre>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== TECH STACK ===== -->
+    <section class="stack-section">
+      <div class="section-header reveal-up">
+        <span class="eyebrow">Technologies</span>
+        <h2 class="h2">Tech Stack</h2>
+      </div>
+
+      <div class="stack-grid reveal-up" style="--delay:.1s">
+        <div class="stack-card">
+          <div class="stack-icon">🐍</div>
+          <h3 class="stack-name">Python</h3>
+          <p class="stack-desc">Core scripting language for the ETL orchestration via main.py</p>
+        </div>
+        <div class="stack-card">
+          <div class="stack-icon">🐼</div>
+          <h3 class="stack-name">Pandas</h3>
+          <p class="stack-desc">Data extraction, column renaming, type casting, deduplication</p>
+        </div>
+        <div class="stack-card">
+          <div class="stack-icon">🗄️</div>
+          <h3 class="stack-name">PostgreSQL</h3>
+          <p class="stack-desc">Target relational database. Schema designed and queried with SQL</p>
+        </div>
+        <div class="stack-card">
+          <div class="stack-icon">⚙️</div>
+          <h3 class="stack-name">SQLAlchemy</h3>
+          <p class="stack-desc">Python SQL toolkit used as the database engine connector</p>
+        </div>
+        <div class="stack-card">
+          <div class="stack-icon">🔐</div>
+          <h3 class="stack-name">python-dotenv</h3>
+          <p class="stack-desc">Secures DB credentials by loading them from a .env file</p>
+        </div>
+        <div class="stack-card">
+          <div class="stack-icon">📊</div>
+          <h3 class="stack-name">Jupyter</h3>
+          <p class="stack-desc">Visualizations notebook for exploratory data analysis</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHAT I LEARNED ===== -->
+    <section class="learnings-section">
+      <div class="section-header reveal-up">
+        <span class="eyebrow">Reflection</span>
+        <h2 class="h2">Key Takeaways</h2>
+      </div>
+
+      <div class="learnings-grid reveal-up" style="--delay:.1s">
+        <div class="learning-card lc-1">
+          <div class="lc-num">01</div>
+          <h3 class="lc-title">ETL Design Patterns</h3>
+          <p class="lc-text">Structuring a pipeline into separate Extract, Transform, and Load modules makes the code reusable, testable, and easy to extend.</p>
+        </div>
+        <div class="learning-card lc-2">
+          <div class="lc-num">02</div>
+          <h3 class="lc-title">Database Schema First</h3>
+          <p class="lc-text">Designing and creating the PostgreSQL table before loading data ensures type safety and prevents silent failures on insert.</p>
+        </div>
+        <div class="learning-card lc-3">
+          <div class="lc-num">03</div>
+          <h3 class="lc-title">SQL Analytics Power</h3>
+          <p class="lc-text">Writing grouped and ordered SQL queries directly against the loaded table produces business insights instantly without additional tooling.</p>
+        </div>
+        <div class="learning-card lc-4">
+          <div class="lc-num">04</div>
+          <h3 class="lc-title">Secrets Management</h3>
+          <p class="lc-text">Using python-dotenv and .gitignore to protect credentials is essential even in personal projects — good habits from day one.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOLDER STRUCTURE ===== -->
+    <section class="folder-section">
+      <div class="section-header reveal-up">
+        <span class="eyebrow">Project Layout</span>
+        <h2 class="h2">Folder Structure</h2>
+      </div>
+
+      <div class="folder-tree reveal-up" style="--delay:.1s">
+        <div class="tree-line root">
+          <span class="tree-icon">📁</span> <span class="tree-name">Superstore/</span>
+        </div>
+        <div class="tree-line l1">
+          <span class="tree-connector">├──</span>
+          <span class="tree-icon">📁</span> <span class="tree-name">data/</span>
+        </div>
+        <div class="tree-line l2">
+          <span class="tree-connector">│&nbsp;&nbsp;└──</span>
+          <span class="tree-icon">📄</span> <span class="tree-name tree-csv">raw_data.csv</span>
+          <span class="tree-note">Global Superstore dataset</span>
+        </div>
+        <div class="tree-line l1">
+          <span class="tree-connector">├──</span>
+          <span class="tree-icon">📁</span> <span class="tree-name">scripts/</span>
+        </div>
+        <div class="tree-line l2">
+          <span class="tree-connector">│&nbsp;&nbsp;├──</span>
+          <span class="tree-icon">🐍</span> <span class="tree-name tree-py">extract.py</span>
+          <span class="tree-note">Read CSV with Pandas</span>
+        </div>
+        <div class="tree-line l2">
+          <span class="tree-connector">│&nbsp;&nbsp;├──</span>
+          <span class="tree-icon">🐍</span> <span class="tree-name tree-py">transform.py</span>
+          <span class="tree-note">Clean &amp; rename columns</span>
+        </div>
+        <div class="tree-line l2">
+          <span class="tree-connector">│&nbsp;&nbsp;├──</span>
+          <span class="tree-icon">🐍</span> <span class="tree-name tree-py">load.py</span>
+          <span class="tree-note">Push to PostgreSQL</span>
+        </div>
+        <div class="tree-line l2">
+          <span class="tree-connector">│&nbsp;&nbsp;└──</span>
+          <span class="tree-icon">🐍</span> <span class="tree-name tree-py">main.py</span>
+          <span class="tree-note">Pipeline orchestrator</span>
+        </div>
+        <div class="tree-line l1">
+          <span class="tree-connector">├──</span>
+          <span class="tree-icon">📁</span> <span class="tree-name">sql/</span>
+        </div>
+        <div class="tree-line l2">
+          <span class="tree-connector">│&nbsp;&nbsp;├──</span>
+          <span class="tree-icon">🗄️</span> <span class="tree-name tree-sql">table_creation.sql</span>
+          <span class="tree-note">DB schema definition</span>
+        </div>
+        <div class="tree-line l2">
+          <span class="tree-connector">│&nbsp;&nbsp;└──</span>
+          <span class="tree-icon">🗄️</span> <span class="tree-name tree-sql">data_analysis.sql</span>
+          <span class="tree-note">KPIs &amp; analytics queries</span>
+        </div>
+        <div class="tree-line l1">
+          <span class="tree-connector">├──</span>
+          <span class="tree-icon">📁</span> <span class="tree-name">outputs/</span>
+        </div>
+        <div class="tree-line l2">
+          <span class="tree-connector">│&nbsp;&nbsp;└──</span>
+          <span class="tree-icon">📓</span> <span class="tree-name">Visualizations.ipynb</span>
+          <span class="tree-note">EDA notebook</span>
+        </div>
+        <div class="tree-line l1">
+          <span class="tree-connector">├──</span>
+          <span class="tree-icon">📄</span> <span class="tree-name">requirements.txt</span>
+        </div>
+        <div class="tree-line l1">
+          <span class="tree-connector">└──</span>
+          <span class="tree-icon">🔐</span> <span class="tree-name">.env</span>
+          <span class="tree-note">DB credentials (gitignored)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section reveal-up">
+      <h2 class="cta-title">See the full source code</h2>
+      <p class="cta-sub">All scripts, SQL files, and the Jupyter notebook are available on GitHub.</p>
+      <a href="https://github.com/Iyedos/datacleaning-ETL-projects/tree/main/superstore-project" target="_blank" class="btn-primary btn-large">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+    </section>
+
+  </main>
+
+  <script src="ja.js"></script>
+</body>
+</html>
